@@ -1,0 +1,8 @@
+{
+  "name": "fish-finder",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "^4.18.2",
+    "globby": "^13.1.2"
+  }
+}
