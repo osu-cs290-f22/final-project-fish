@@ -8,5 +8,5 @@ Commands to install packages:
 Commands to run server:
 
 `node server.js`
-'nodemon server.js'
+`nodemon server.js`
 (Will restart server automatically with updates to js, json files)
