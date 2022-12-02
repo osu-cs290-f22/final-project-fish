@@ -6,6 +6,11 @@ html, body{
     width: 100%;
 }
 
+main{
+
+    padding: 20px;
+}
+
 /*
 /*
 Modal stuff
