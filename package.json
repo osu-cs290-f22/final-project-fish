@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "npx kill-port 3000 && node server.js",
+    "start": "node server.js",
     "build": "",
     "prestart": "npm run build"
   },

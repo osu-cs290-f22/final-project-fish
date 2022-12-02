@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-    <!--script src="/index.js" charset="utf-8" defer></script> -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello World</title>
+        <!--script src="/index.js" charset="utf-8" defer></script> -->
 
-    <script type="text/javascript" src="/test.js"></script>
+        <script type="text/javascript" src="/intro_modal.js" defer></script>
+        <script type="text/javascript" src="/test.js" defer></script>
+        <link rel="stylesheet" href="/style.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-    canvas {
-        border:1px solid #d3d3d3;
-        background-color: #f1f1f1;
-    }
-    </style>
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
-<!--  onload="startGame()"    type="text/javascript" -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            canvas {
+                border:1px solid #d3d3d3;
+                background-color: #f1f1f1;
+            }
+        </style>
+    </head>
 
-<body>
-    <button onClick="startGame()">Start Game</button>
+    <!--  onload="startGame()"    type="text/javascript" -->
 
-<br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
-<p>Use the ACCELERATE button to stay in the air</p>
-<p>How long can you stay alive?</p>
-</body>
+    <body>
+        
+        <!-- Ignore the intro modal by commenting out this div -->
+        <div id="introModal">
+
+            <p class="modalText">Gone Fishing</p>
+
+            <button id="modalButton" onClick="modalAway()">Start</button>
+
+        </div>
+        
+
+        <button onClick="startGame()">Start Game</button>
+
+        <br>
+        <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
+        <p>Use the ACCELERATE button to stay in the air</p>
+        <p>How long can you stay alive?</p>
+
+    </body>
 </html>
 
 
