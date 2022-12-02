@@ -1,8 +1,19 @@
 {
   "name": "fish-finder",
   "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "npx kill-port 3000 && node server.js",
+    "build": "",
+    "prestart": "npm run build"
+  },
   "dependencies": {
     "express": "^4.18.2",
-    "globby": "^13.1.2"
+    "express-handlebars": "^6.0.6",
+    "globby": "^13.1.2",
+    "handlebars": "^4.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
