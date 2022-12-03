@@ -1,8 +1,8 @@
-
-
-
 var express = require('express')
 var exphbs = require('express-handlebars');
+
+var fishData = require('./fishData.json');
+var fs = require("fs");
 
 
 var app = express()
@@ -46,3 +46,6 @@ app.get('*', function (req, res, next) {
 app.listen(port, function () {
     console.log('== Server is listening on port:', port)
 })
+// console.log(fishData)
+fishData.fish.push("bana");
+// console.log(fishData)
