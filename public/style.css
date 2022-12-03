@@ -11,6 +11,11 @@ main{
     padding: 20px;
 }
 
+a {
+    color: #FDFCDC;
+    text-decoration: none;
+}
+
 /*
 /*
 Modal stuff
