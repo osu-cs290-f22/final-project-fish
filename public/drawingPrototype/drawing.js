@@ -1,3 +1,5 @@
+
+
 /**
  * 
  * @type HTMLCanvasElement
@@ -8,12 +10,21 @@ const colorInput = document.getElementById("colorInput")
 const toggleGuide = document.getElementById("toggleGuide")
 const clearButton = document.getElementById("clearButton")
 const toggleErase = document.getElementById("toggleErase") 
+const exportButton = document.getElementById("exportButton")
+
+const strokeRange = document.getElementById("strokeRange")
+const strokeLabel = document.getElementById("strokeLabel")
 
 const drawingContext = canvas.getContext("2d")  // aka ctx
 
 const CELL_SIDE_COUNT = 100
 const cellPixelLength = canvas.width / CELL_SIDE_COUNT
-const colorHistory = {}  // Tells us what colors were used for a given x/y coord
+
+// colorHistory: The javascript object that stores picture data
+        // Tells us what colors were used for a given x/y coord. In format "{posx}_{posy}": "{color}"
+        // Position starts from top left, positive y-axis is downwards and positive x-axis is to the right
+        // Transparent cells (or erased cells) aren't listed in this object
+const colorHistory = {}  
 //
 
 
@@ -25,7 +36,7 @@ drawingContext.fillStyle = "rgba(0, 0, 0, 0)"
 drawingContext.fillRect(0, 0, canvas.width, canvas.height)
 //
 
-// Setup the guide
+// Setup the pixel grid guide
 guide.style.width = `${canvas.width}px`
 guide.style.height = `${canvas.height}px`
 guide.style.gridTemplateColumns = `repeat(${CELL_SIDE_COUNT}, 1fr)`
@@ -35,10 +46,12 @@ guide.style.gridTemplateRows = `repeat(${CELL_SIDE_COUNT}, 1fr)`;
 //
 
 
-// Determine mouse states:
+var strokeWidth = 1
 var leftMouseDown = 0
 var ctrlDown = 0
 
+
+// Functions for determining mouse state
 function onCanvasMouseDown(e) { 
     
     if(e.ctrlKey)
@@ -90,18 +103,17 @@ function canvasMouseActive(e){
 
         if(toggleErase.checked){
 
-            clearCell(cellX, cellY)
+            editAtCenter(cellX, cellY, eraseCell)
         
         }else{
 
-            fillCell(cellX, cellY)
+            editAtCenter(cellX, cellY, fillCell)
         }
     }
 }
 
-function handleClearButtonClick(){
 
-    console.log(" == Old members:", colorHistory)
+function handleClearButtonClick(){
 
     const yes = confirm("Are you sure you wish to clear the canvas?")
 
@@ -114,21 +126,68 @@ function handleClearButtonClick(){
     // drawingContext.fillRect(0, 0, canvas.width, canvas.height)
 
     for (var member in colorHistory) delete colorHistory[member]
-
-    console.log(" == New members:", colorHistory)
 }
+
 
 function handleToggleGuideChange(){
 
-    guide.style.display = toggleGuide.checked ? null : "none"
+    guide.style.display = toggleGuide.checked ? "grid" : "none"
+    console.log(" == guide.style.display:", guide.style.display)
 }
+
+
+function spiralAround(centerX, centerY, magnitude, cellAction){
+
+    var x
+
+    // Left to top
+    for(x = -magnitude; x < 0; x++){
+
+        cellAction(centerX + x, centerY + (-magnitude - x))
+    }
+
+    // Top to right
+    for(x = 0; x < magnitude; x++){
+
+        cellAction(centerX + x, centerY + (-magnitude + x))
+    }
+
+    // Right to bottom
+    for(x = magnitude; x > 0; x--){
+
+        cellAction(centerX + x, centerY + (magnitude - x))
+    }
+
+    // Bottom to left
+    for(x = 0; x > -magnitude; x--){
+
+        cellAction(centerX + x, centerY + (magnitude + x))
+    }
+}
+
+
+function editAtCenter(centerX, centerY, cellAction){
+
+    // Fill just at center
+    cellAction(centerX, centerY)
+    
+    // Spirals the center around filling more, if the stroke is bigger
+    if(strokeWidth != 1){
+
+        var distance
+        for(distance = 1; distance <= (strokeWidth + 1) / 2; distance++)
+            spiralAround(centerX, centerY, distance, cellAction)
+    }
+}
+
 
 function fillCell(cellX, cellY){
 
-    console.log("Drawing!")
-
     // X=0 and Y=0 is the top left corner
     // Positive values go right / downwards
+
+    if(cellX < 0 || cellX >= CELL_SIDE_COUNT || cellY < 0 || cellY >= CELL_SIDE_COUNT)
+        return
 
     const startX = cellX * cellPixelLength
     const startY = cellY * cellPixelLength
@@ -138,10 +197,14 @@ function fillCell(cellX, cellY){
     colorHistory[`${cellX}_${cellY}`] = colorInput.value
 }
 
-function clearCell(cellX, cellY){
+
+function eraseCell(cellX, cellY){
 
     // X=0 and Y=0 is the top left corner
     // Positive values go right / downwards
+
+    if(cellX < 0 || cellX >= CELL_SIDE_COUNT || cellY < 0 || cellY >= CELL_SIDE_COUNT)
+        return
 
     const startX = cellX * cellPixelLength
     const startY = cellY * cellPixelLength
@@ -153,16 +216,42 @@ function clearCell(cellX, cellY){
     if(`${cellX}_${cellY}` in colorHistory)
         delete colorHistory[`${cellX}_${cellY}`]
 }
-//
+
+
+function updateStrokeRangeUI(){
+
+    strokeLabel.textContent = `Stroke ${strokeRange.value}`
+}
+
+
+function changeStroke(){
+
+    strokeWidth = parseInt(strokeRange.value)
+    console.log(" == New stroke Width:", strokeWidth)
+}
+
+
+function exportData() {
+
+    alert("Data is available in the colorHistory js object. its format is explained higher up!!!!! Printed to console.")
+    console.log(" == colorHistory:", colorHistory)
+}
+
 
 
 // Detects when left clicks are used inside the canvas 
 canvas.addEventListener("mousedown", onCanvasMouseDown)
 window.addEventListener("mouseup", onWindowMouseUp)
 window.addEventListener("mouseleave", onWindowMouseLeave)
-// -----------------
+// 
 
-// Other event listeners
+// Detects changes to drawing modes
 canvas.addEventListener("mousemove", canvasMouseActive)
 clearButton.addEventListener("click", handleClearButtonClick)
 toggleGuide.addEventListener("change", handleToggleGuideChange)
+strokeRange.addEventListener("change", changeStroke)
+strokeRange.addEventListener("input", updateStrokeRangeUI)
+//
+
+// Exporting!
+exportButton.addEventListener("click", exportData)

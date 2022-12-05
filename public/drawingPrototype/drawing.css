@@ -1,0 +1,45 @@
+#drawingPanel{
+
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    height: 620px;
+    padding: 20px;
+    margin: auto;
+
+    background-color: #F07167;
+    border-radius: 3px;
+    justify-content: space-around;
+}
+
+#drawingCanvas{
+    cursor: pointer;
+
+    /* temporary */
+    outline: 3px solid red;
+}
+
+body{
+
+    background-color: aquamarine; 
+    /* JUST TO TEST! */
+}
+
+#guide{
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#guide div{
+
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#strokeLabel{
+
+    display: inline-block;
+    width: 70px;
+}
+
