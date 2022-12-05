@@ -46,7 +46,7 @@ guide.style.gridTemplateRows = `repeat(${CELL_SIDE_COUNT}, 1fr)`;
 //
 
 
-var strokeWidth = 1
+var strokeWidth = 5
 var leftMouseDown = 0
 var ctrlDown = 0
 
