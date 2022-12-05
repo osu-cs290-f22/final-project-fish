@@ -1,0 +1,10 @@
+#drawingCanvas{
+    cursor: pointer;
+    outline: 3px solid red;
+}
+
+body{
+
+    background-color: aquamarine; 
+    /* JUST TO TEST! */
+}
