@@ -1,0 +1,38 @@
+#object{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background: #0000ff;
+    left: 275px;
+    top: 175px;
+    color: yellow;
+    z-index: 100;
+}
+
+#water{
+    background-color: darkcyan;
+    position: relative;
+    top: 100px;
+    left: 600px;
+    height: 4400px;
+}
+
+.gameviewer
+{
+    background-color: gray;
+    width: 5000px;
+    height: 5000px;
+    position: relative;
+}
+
+.fish{
+    background-color: aqua;
+    width: 10px;
+    height: 10px;
+    position: relative;
+}
+
+.hidden{
+    display: none;
+}
