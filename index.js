@@ -17,9 +17,13 @@ var lureID = "object"
 // Name of viewport class (This could also be an ID)
 var viewportClass = "gameviewer"
 
+// Name of button id
+var buttonID = "button"
+
 // Get Global Objects
 var lure = document.getElementById(lureID)
 var viewport = document.getElementsByClassName(viewportClass)[0]
+var startButton = document.getElementById(buttonID)
 
 // Constant Variables
 const gravity = 1;
@@ -29,12 +33,17 @@ const reelStrength = -1;
 const UPDATETIMER = 10;
 
 const VIEWPORTDIMENSIONS = {
-    x: 600,
-    y: 400
+    x: 1920,
+    y: 1080
 }
 
+var castRange = 1000;
+
 // Set Velocity of lure to gravity
-var currentVelocity = gravity;
+var currentVelocity = { 
+    y: gravity,
+    x: reelStrength
+};
 
 // Lure positon in world
 var lurePos = {
@@ -70,17 +79,24 @@ var fishs = [
     },
 ]
 
+var startCast = false;
+
+var gameIsRunning = false;
 
 // METHODS ***************************
 //      -Called before first update
-function start()
+function startGame()
 {
     viewport.addEventListener("mousedown", function () {
-        currentVelocity = reelStrength
+        currentVelocity.y = reelStrength;
     })
     
     viewport.addEventListener("mouseup", function () {
-        currentVelocity = gravity
+        currentVelocity.y = gravity;
+    })
+
+    startButton.addEventListener("mousedown", function () {
+        startCast = true;
     })
 
     // Begin Update Call
@@ -90,8 +106,21 @@ function start()
 // Update Function
 function update()
 {
-    updatePosition();
+    console.log(gameIsRunning)
     
+    if (startCast)
+    {
+        startCast = false;
+        cast(castRange);
+    }
+    if (gameIsRunning)
+    {
+        updatePosition();
+        
+        checkIfReel();
+    }
+    updateScreenLocation();
+
     // Recursive call after UPDATETIMER
     // NOTE: setTimeout is an asynchronous function, code below it will run before update is called again. 
     setTimeout(() => {
@@ -99,36 +128,80 @@ function update()
     }, UPDATETIMER);
 }
 
+function checkIfReel()
+{
+    if (lurePos.x <= 0)
+    {
+        currentVelocity.x = 0;
+        if (lurePos.y <= 0)
+        {
+            gameIsRunning = false;
+        }
+    }
+    
+}
+
+function cast(castDistance)
+{
+    if (lurePos.x < castDistance)
+    {
+        if (castDistance - lurePos.x >= castDistance / 2)
+        {
+            lurePos.y -= gravity
+        }
+        else
+        {
+            lurePos.y += gravity + 1
+        }
+        
+        lurePos.x -= reelStrength * 5
+
+        setTimeout(() => {
+            cast(castDistance);
+        }, UPDATETIMER);
+    }
+    else
+    {
+        currentVelocity.y = gravity;
+        currentVelocity.x = reelStrength;
+        gameIsRunning = true;
+    }
+}
+
+function updateScreenLocation()
+{
+    updateScreenValues();
+    updateFishVisability();
+}
+
 // Update all positional values
 function updatePosition()
 {
     updatePositionValues();
-    updateScreenValues();
-    updateFishLocations();
 }
 
 // Update lure position
 function updatePositionValues()
 {
-    lurePos.y += currentVelocity;
-    lurePos.x += 0;
+    lurePos.y += currentVelocity.y;
+    lurePos.x += currentVelocity.x;
 }
 
 // Update each fish location in viewport 
-function updateFishLocations()
+function updateFishVisability()
 {
     fishs.forEach(function (fish, index) {
         var fishElement = document.getElementById(fishIDPrefix + index);
         // Check if fish is in veiwportBounds
         if ((fish.depth < viewportBounds.y.bottom && fish.depth > viewportBounds.y.top) && (fish.distance < viewportBounds.x.right && fish.distance > viewportBounds.x.left))
         {
+            fishElement.style.top = fish.depth + "px";
+            fishElement.style.left = fish.distance + "px";
             fishElement.classList.remove(hiddenClass)
-            fishElement.style.top = fish.depth - viewportBounds.y.top  - 60 + "px";
-            fishElement.style.left = fish.distance - viewportBounds.x.left + "px";
         }
         else
         {
-            fishElement.classList.add(hiddenClass)
+            fishElement.classList.add(hiddenClass);
         }
     })
 }
@@ -140,12 +213,14 @@ function updateScreenValues()
     viewportBounds.x.right = lurePos.x + (VIEWPORTDIMENSIONS.x / 2);
     viewportBounds.y.top = lurePos.y - (VIEWPORTDIMENSIONS.y / 2);
     viewportBounds.y.bottom = lurePos.y + (VIEWPORTDIMENSIONS.y / 2);
+
+    viewport.style.top = -lurePos.y + "px";
+    viewport.style.left = -lurePos.x + "px";
+    lure.style.top = lurePos.y + (VIEWPORTDIMENSIONS.y / 2) + "px";
+    lure.style.left = lurePos.x + (VIEWPORTDIMENSIONS.x / 2) + "px";
 }
 
 
 
 
-
-
-// START CALL
-start();
+startGame();
