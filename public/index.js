@@ -39,7 +39,7 @@ const UPDATETIMER = 10;
 
 const fishValue = 100;
 
-const numberOfFishToSpawn = 20;
+const numberOfFishToSpawn = 35;
 
 var currentScore = 0;
 
@@ -310,7 +310,7 @@ async function fishSpawner(index) {
 
     ocean.appendChild(personPhotoImg)
 
-    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500), hooked: false, caught: false} // TODO change to canvas size
+    const fishCoordinates = {distance: getRandomNumber(10, 2000), depth: getRandomNumber(10, 2000), hooked: false, caught: false} // TODO change to canvas size
     fishs.push(fishCoordinates)
 }
 
