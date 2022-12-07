@@ -3,16 +3,14 @@ var exphbs = require('express-handlebars');
 
 var fishData = require('./public/userImages/fishData.json')
 var fs = require("fs");
-const path = require("path");
 
 
 var app = express()
 var port = process.env.PORT || 3000;
 
-var listOfFishImages = fs.readdirSync(path.join(__dirname + "/public"+"/userImages"))
 
 function getRandomImage() {
-    return fishData[Math.floor(Math.random() * (listOfFishImages.length))]
+    return fishData[Math.floor(Math.random() * (fishData.length))]
 }
 
 app.engine('handlebars', exphbs.engine({
