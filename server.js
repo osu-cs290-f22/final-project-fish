@@ -12,8 +12,7 @@ var port = process.env.PORT || 3000;
 var listOfFishImages = fs.readdirSync(path.join(__dirname + "/public"+"/userImages"))
 
 function getRandomImage() {
-    console.log(listOfFishImages)
-    return listOfFishImages[Math.floor(Math.random() * (listOfFishImages.length))]
+    return fishData[Math.floor(Math.random() * (listOfFishImages.length))]
 }
 
 app.engine('handlebars', exphbs.engine({
@@ -47,6 +46,10 @@ app.get('/about', function (req, res, next) {
     console.log('  -- req.method:', req.method)
     res.status(200).sendFile(__dirname + '/public/about.html')
 })
+
+app.get('/drawing/randomFish', (req, res) => {
+    res.json(getRandomImage());
+});
 
 app.post('/drawing/newFish', function(req, res, next){
 
@@ -99,7 +102,7 @@ app.get('*', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
-    
+
     res.status(404).render('404');
 })
 
