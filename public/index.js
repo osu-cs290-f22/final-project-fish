@@ -93,6 +93,8 @@ var startCast = false;
 
 var gameIsRunning = false;
 
+var minHeight = 2000
+
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -167,8 +169,12 @@ function checkIfReel()
             checkIfFishCaught()
             gameIsRunning = false;
         }
+        else if (lurePos.y >= minHeight && currentVelocity.y >= gravity)
+        {
+            currentVelocity.y = 0;
+        }
     } 
-    else if (lurePos.y <= 0 && currentVelocity.y != gravity)
+    else if ((lurePos.y <= 0 && currentVelocity.y != gravity) || (lurePos.y >= minHeight && currentVelocity.y >= gravity))
     {
         currentVelocity.y = 0;
     }
