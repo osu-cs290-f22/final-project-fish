@@ -233,8 +233,13 @@ function changeStroke(){
 
 function exportData() {
 
-    alert("Data is available in the colorHistory js object. its format is explained higher up!!!!! Printed to console.")
-    console.log(" == colorHistory:", colorHistory)
+    // alert("Data is available in the colorHistory js object. its format is explained higher up!!!!! Printed to console.")
+    // console.log(" == colorHistory:", colorHistory)
+
+    var fish_data = {}
+
+    fish_data["imgURL"]
+
 }
 
 
