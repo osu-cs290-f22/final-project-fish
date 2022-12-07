@@ -12,7 +12,7 @@
         <script src="./index.js" charset="utf-8" defer></script>
 
         <!-- intro modal stuff -->
-<!--         <link rel="stylesheet" href="/modalStyle.css">
+  <!--       <link rel="stylesheet" href="/modalStyle.css">
         <script type="text/javascript" src="/intro_modal.js" defer></script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,19 +21,22 @@
 
     </head>
 
+    <!-- previous location of header... -->
 
     <!-- top bar with title -->
-    <header>
+    <!-- <header>
         <div class="header-image-container">
             <img src="{{headerFishImgURL}}" width="80px" height="80px" alt="Fish logo">
         </div>
 
         <h1 class="site-title" id="gradient-text"><a href="#">Fish related game</a></h1>
-    </header>
+    </header> -->
+
+
 
     <body>
-
-<!--         {{#if firstTime}}
+<!-- 
+        {{#if firstTime}}
 
             {{!-- <p style="font-size: 100px; color: white;"> HIIIIII ITHIS IS  ATEST</p> --}}
             {{> introModal}}
@@ -43,6 +46,13 @@
         <!-- stuff that moves -->
         <div class="gameviewer">
 
+            <header>
+                <div class="header-image-container">
+                    <img src="{{headerFishImgURL}}" width="80px" height="80px" alt="Fish logo">
+                </div>
+
+                <h1 class="site-title" id="gradient-text"><a href="#">Fish related game</a></h1>
+            </header>
             <div class="sidebar">
 
                 <!-- lure cast (needs to be in gameviewer) -->

@@ -33,7 +33,7 @@
 {
     opacity: 1;
     background: url(images/forestbackground.jpg) repeat;
-    background-size: 300px;
+    background-size: 400px;
     /*background-color: green;*/
     position: relative;
     height: 2000px;
@@ -108,7 +108,10 @@ a:hover, a:active { text-decoration: none; color:white }*/
 
 header {
     position: relative;
+    top: 0px;
+    left: 0px;
     background-color: #92cade;
+    background: none;
     display: flex;
     align-items: center;
     position: relative;
