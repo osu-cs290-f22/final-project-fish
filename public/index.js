@@ -9,7 +9,21 @@ var hiddenClass = "hidden"
  *  IE: <div id="fish0" class = "fish"></div>
  *  where the fishIDPrefix is "fish"
  */
-var fishIDPrefix = "fish" 
+var fishIDPrefix = "fish"
+
+var fishFiles = [
+    path1={
+    path: "./userImages/gold.png"
+    },
+    path2={
+    path: "https://clipground.com/images/cooked-fish-clipart-png-18.png"
+    },
+    path3={
+    path: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59168/fish-clipart-md.png"
+    },
+    path4={
+    path: "./userImages/derp.png"    }
+]
 
 // Name of lure class
 var lureID = "object"
@@ -212,10 +226,14 @@ function updateFishVisability()
         }
     })
 }
+
+function getRandomImage() {
+    console.log(fishFiles)
+    return fishFiles[Math.floor(Math.random() * (fishFiles.length))].path
+}
 //Spawns one fish at a random location
 function fishSpawner(index) {
-    let photoUrl = "./userImages/gold.png"
-    console.log(document.getElementById("water"))
+    let photoUrl = getRandomImage()
     let ocean = document.getElementById("water")
 
     var imgContainerDiv = document.createElement("div")
@@ -223,23 +241,13 @@ function fishSpawner(index) {
 
     var personPhotoImg = document.createElement("img")
     personPhotoImg.classList.add("fish-img")
-    // personPhotoImg.style.width("64");
-    // personPhotoImg.style.
     personPhotoImg.src = photoUrl
     imgContainerDiv.appendChild(personPhotoImg)
 
-    console.log("== photoCardSection:", imgContainerDiv)
 
     ocean.appendChild(imgContainerDiv)
 
-
-
 }
-
-function addPhotoCard(photoUrl, index) {
-
-}
-
 
 // Set viewportBounds to be centered on lure position 
 function updateScreenValues()
