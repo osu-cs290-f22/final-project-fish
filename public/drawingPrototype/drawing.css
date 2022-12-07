@@ -1,14 +1,31 @@
+html, body{
+
+    padding: 0;
+    margin: 0;
+}
+
+body{
+
+    background-image: linear-gradient(#92cade, #9cd6ec);
+    height: 100vh;
+
+    display: flow-root
+    /* overflow: auto; */
+}
+
 #drawingPanel{
 
     display: flex;
     flex-direction: row;
     width: 1200px;
-    height: 620px;
+    height: 600px;
     padding: 20px;
+
     margin: auto;
+    margin-top: 20px;
 
     background-color: #F07167;
-    border-radius: 3px;
+    border-radius: 4px;
     justify-content: space-around;
 }
 
@@ -52,9 +69,6 @@
     height: 580px;
     position: absolute;
 
-    top: 29px;
-    /* bottom: -580px; */
-
     pointer-events: none;
 
     background-image: url('/images/fishBackground.png');
@@ -68,12 +82,6 @@
 
     /* temporary */
     outline: 3px solid red;
-}
-
-body{
-
-    background-color: #92cade; 
-    /* JUST TO TEST! */
 }
 
 #guide{
@@ -94,3 +102,7 @@ body{
     width: 70px;
 }
 
+p{
+
+    margin: 0;
+}
