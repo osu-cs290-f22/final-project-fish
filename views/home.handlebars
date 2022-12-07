@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Fish Related Game</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+        <!-- fonts -->
+        <link href="./fonts/stylesheet.css" rel="stylesheet" />
+
+        <!-- game page script and css -->
+        <link href="./style2.css" rel="stylesheet" />
+        <script src="./index.js" charset="utf-8" defer></script>
+
+        <!-- intro modal stuff -->
+        <link rel="stylesheet" href="/modalStyle.css">
+        <script type="text/javascript" src="/intro_modal.js" defer></script>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
     </head>
 
-    <!-- fonts -->
-    <link href="./fonts/stylesheet.css" rel="stylesheet" />
-
-    <!-- game page script and css -->
-    <link href="./style2.css" rel="stylesheet" />
-    <script src="./index.js" charset="utf-8" defer></script>
+    
 
     <!-- top bar with title -->
     <header>
@@ -21,6 +33,13 @@
     </header>
 
     <body>
+
+        {{#if firstTime}}
+
+            {{!-- <p style="font-size: 100px; color: white;"> HIIIIII ITHIS IS  ATEST</p> --}}
+            {{> introModal}}
+
+        {{/if}}
 
         <!-- stuff that moves -->
         <div class="gameviewer">
