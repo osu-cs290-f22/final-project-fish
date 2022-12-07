@@ -94,12 +94,12 @@ app.post('/drawing/newFish', function(req, res, next){
     if(req.body && req.body.imgURL && req.body.birthday && req.body.name && req.body.description && req.body.favMovie){
 
         // Catch any people posting unfiltered data
-        // if(req.body.name.contains('>') || req.body.name.contains('<') || req.body.description.contains('>') ||
-        //     req.body.description.contains('<') || req.body.favMovie.contains('>') || req.body.favMovie.contains('<')){
+        if(req.body.name.includes('>') || req.body.name.includes('<') || req.body.description.includes('>') ||
+            req.body.description.includes('<') || req.body.favMovie.includes('>') || req.body.favMovie.includes('<')){
 
-        //         res.status(400).send('Possibly dangerous fish data was rejected.')
-        //         return
-        //     }
+                res.status(400).send('Possibly dangerous fish data was rejected.')
+                return
+            }
 
         var newFishObj = {
 
