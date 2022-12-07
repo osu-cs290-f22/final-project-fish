@@ -32,13 +32,18 @@ var lureID = "object"
 // Name of viewport class (This could also be an ID)
 var viewportClass = "gameviewer"
 
-// Name of button id
-var buttonID = "button"
+// Name of "cast lure" button ID
+var buttonID = "cast_lure"
+
+// Name of "open editor" button ID
+var editorID = "open_editor"
 
 // Get Global Objects
 var lure = document.getElementById(lureID)
 var viewport = document.getElementsByClassName(viewportClass)[0]
 var startButton = document.getElementById(buttonID)
+var editorButton = document.getElementById(editorID)
+
 
 // Constant Variables
 const gravity = 1;
@@ -261,3 +266,31 @@ function updateScreenValues()
 
 
 startGame();
+
+
+
+
+// ***********************
+// FISH EDITOR MODAL STUFF
+// ***********************
+
+var modal = document.getElementById("fishEditor");
+var span = document.getElementsByClassName("closeEditor")[0];
+
+
+// When the user clicks on the button, open the modal
+editorButton.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

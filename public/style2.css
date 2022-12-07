@@ -19,9 +19,9 @@
     /* ocean gradient background */
     background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     position: relative;
-    height: 100%;
-    width: 94%;
-    float: right;
+    height: 2000px;
+    width: 4000px;
+    float: left;
 
     /* important for forest background */
     margin-top: 150px;
@@ -35,12 +35,12 @@
     /*background-color: green;*/
     position: relative;
     height: 2000px;
-    width: 500%;
+    width: 5000px;
 }
 
 .sidebar {
     background-color: red;
-    width: 6%;
+    width: 400px;
     height: 2000px;
     float: left;
 
@@ -105,4 +105,49 @@ header a {
 .header-image-container img {
     max-height: 100%;
     max-width: 100%;
+}
+
+
+
+
+/*
+MODAL RELATED THINGS
+*/
+
+/* The Modal (background) */
+.fishEditor {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.closeEditor {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.closeEditor:hover,
+.closeEditor:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

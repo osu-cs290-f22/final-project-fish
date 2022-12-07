@@ -28,7 +28,7 @@ app.get('/game', function (req, res, next) {
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
 
-    res.status(200).sendFile(__dirname + '/public/index.html')
+    res.status(200).sendFile(__dirname + '/public/index2.html')
 })
 
 app.get('/editor', function (req, res, next) {
