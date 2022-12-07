@@ -31,8 +31,8 @@ var editorButton = document.getElementById(editorID)
 
 
 // Constant Variables
-const gravity = 2.4;
-const reelStrength = -2;
+const gravity = 2;  // Used to be 1
+const reelStrength = -2.3;  // Used to be -1
 
 // The number of milliseconds between refreses. 
 const UPDATETIMER = 10;
