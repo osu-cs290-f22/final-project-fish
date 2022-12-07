@@ -1,14 +1,9 @@
 var express = require('express')
 var exphbs = require('express-handlebars');
 
-var fishData = require('./public/userImages/fishData.json');
-<<<<<<< Updated upstream
-fishData = fishData
+var fishData = require('./public/userImages/fishData.json')
 var fs = require("fs");
 const path = require("path");
-=======
-var fs = require('fs');
->>>>>>> Stashed changes
 
 
 var app = express()
@@ -28,7 +23,6 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
-
 app.get('/game', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
@@ -45,14 +39,12 @@ app.get('/editor', function (req, res, next) {
     res.status(200).sendFile(__dirname + '/public/drawingPrototype/drawing.html')
 })
 
-
 app.get('/about', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
     res.status(200).sendFile(__dirname + '/public/about.html')
 })
-
 
 app.post('/drawing/newFish', function(req, res, next){
 
@@ -101,7 +93,6 @@ app.post('/drawing/newFish', function(req, res, next){
     }
 })
 
-
 app.get('*', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
@@ -138,10 +129,5 @@ fs.writeFile(
 )
 // fishData.fish.push("bana");
 // console.log(fishData)
-<<<<<<< Updated upstream
 console.log(fishData)
 console.log(getRandomImage())
-=======
-fishData.fish.push('bana');
-// console.log(fishData)
->>>>>>> Stashed changes
