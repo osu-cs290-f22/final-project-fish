@@ -107,31 +107,3 @@ app.get('*', function (req, res, next) {
 app.listen(port, function () {
     console.log('== Server is listening on port:', port)
 })
-
-// console.log(fishData[1])
-// const newFish = {"imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
-//     "birthday": "",
-//     "name": "Examasdfkjhaskjdfbhkjasdnfple Fish",
-//     "description": "This fish is super cool",
-//     "favMovie": "Finding Nemo"}
-
-// fishData.push(newFish)
-// fishData.push(newFish)
-
-// fs.writeFile(
-//     './public/userImages/fishData.json',
-//     JSON.stringify(fishData, null, 2),
-//     function (err) {
-//         if (err) {
-//             // res.status(500).send("Error writing photo to DB")
-//             console.log("you fucked up")
-//         } else {
-//             // res.status(200).send("Photo successfully added!!!!!")
-//             console.log("you didnt fuck up")
-//         }
-//     }
-// )
-// fishData.fish.push("bana");
-// console.log(fishData)
-// console.log(fishData)
-// console.log(getRandomImage())
