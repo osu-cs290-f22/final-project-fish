@@ -26,8 +26,8 @@
     position: relative;
 }
 
-.fish{
-    background-color: aqua;
+.fish-img{
+    /*background-color: aqua;*/
     width: 10px;
     height: 10px;
     position: relative;

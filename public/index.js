@@ -99,6 +99,11 @@ function startGame()
         startCast = true;
     })
 
+    //create 20 fish
+    for (let i = 0; i < 20; i++) {
+        fishSpawner(i);
+    }
+
     // Begin Update Call
     update();
 }
@@ -197,6 +202,8 @@ function updateFishVisability()
         {
             fishElement.style.top = fish.depth + "px";
             fishElement.style.left = fish.distance + "px";
+            // console.log(fishElement)
+            // document.getElementById("your-iframe").setAttribute('src', "./gold");
             fishElement.classList.remove(hiddenClass)
         }
         else
@@ -205,6 +212,34 @@ function updateFishVisability()
         }
     })
 }
+//Spawns one fish at a random location
+function fishSpawner(index) {
+    let photoUrl = "./userImages/gold.png"
+    console.log(document.getElementById("water"))
+    let ocean = document.getElementById("water")
+
+    var imgContainerDiv = document.createElement("div")
+    imgContainerDiv.classList.add("fish" + index)
+
+    var personPhotoImg = document.createElement("img")
+    personPhotoImg.classList.add("fish-img")
+    // personPhotoImg.style.width("64");
+    // personPhotoImg.style.
+    personPhotoImg.src = photoUrl
+    imgContainerDiv.appendChild(personPhotoImg)
+
+    console.log("== photoCardSection:", imgContainerDiv)
+
+    ocean.appendChild(imgContainerDiv)
+
+
+
+}
+
+function addPhotoCard(photoUrl, index) {
+
+}
+
 
 // Set viewportBounds to be centered on lure position 
 function updateScreenValues()
