@@ -231,11 +231,84 @@ function changeStroke(){
 }
 
 
+function makeInputsReadOnly(){
+
+    console.log("TODO: Make inputs read-only")
+}
+
+
+function makeInputsWriteable(){
+
+    console.log("TODO: Make inputs writeable-only")
+}
+
+
+
 function exportData() {
 
-    alert("Data is available in the colorHistory js object. its format is explained higher up!!!!! Printed to console.")
-    console.log(" == colorHistory:", colorHistory)
+    makeInputsReadOnly()
+
+    // Create the data object
+    var fish_data = {}
+
+    fish_data["imgURL"] = canvas.toDataURL("image/png")
+
+    fish_data["birthday"] = document.getElementById("fishBirthday").value
+
+    const fishName = document.getElementById("fishName").value.replace("<", "").replace(">", "")
+    fish_data["name"] = fishName
+
+    const fishDescription = document.getElementById("fishBio").value.replace("<", "").replace(">", "")
+    fish_data["description"] = fishDescription
+
+    const favoriteMovie = document.getElementById("fishMovie").value.replace("<", "").replace(">", "")
+    fish_data["favMovie"] = favoriteMovie
+
+    // Post the object to the server and quit
+        // If there's an error, tell the user and make inputs writeable again
+    exportAndQuit(fish_data)
 }
+
+
+function exportAndQuit(fish_data){
+
+    var reqUrl = "/drawing/newFish"
+
+    // Fetch is used to send http requests through js
+    fetch(reqUrl, {
+
+      // Default request is get, but we want it to be a post request
+      method: "POST",
+      body: fish_data,
+      headers: {
+        "Content-Type": "application/json"
+      }
+
+    }).then(function(res){
+
+        // SUCCESS
+        if(res.status === 200){
+
+            // Tell the user their fish was uploaded and continue
+            alert("Your fish was successfully uploaded!")
+            alert("Need to put away the editor now that it's done")
+        
+        // FAIL
+        }else{
+
+            alert("An error occured--this fish was not saved: " + res.status)
+            makeInputsReadOnly()
+        }
+
+    // ERROR
+    }).catch(function (err){
+
+      alert("An error occured--this fish was not saved: " + err)
+      makeInputsReadOnly()
+    })
+}
+
+
 
 
 
