@@ -12,12 +12,12 @@
         <script src="./index.js" charset="utf-8" defer></script>
 
         <!-- intro modal stuff -->
-  <!--       <link rel="stylesheet" href="/modalStyle.css">
+        <link rel="stylesheet" href="/modalStyle.css">
         <script type="text/javascript" src="/intro_modal.js" defer></script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     </head>
 
@@ -35,16 +35,16 @@
 
 
     <body>
-<!-- 
+
         {{#if firstTime}}
 
             {{!-- <p style="font-size: 100px; color: white;"> HIIIIII ITHIS IS  ATEST</p> --}}
             {{> introModal}}
 
-        {{/if}} -->
+        {{/if}}
 
         <!-- stuff that moves -->
-        <div class="gameviewer">
+        <div class="gameviewer prevent-select">
 
             <header>
                 <div class="header-image-container">
@@ -53,7 +53,7 @@
 
                 <h1 class="site-title" id="gradient-text"><a href="#">Fish related game</a></h1>
             </header>
-            <div class="sidebar">
+            <div class="sidebar prevent-select">
 
                 <!-- lure cast (needs to be in gameviewer) -->
                 <button id="cast_lure" class="button"> Cast Lure! </button>
@@ -109,7 +109,7 @@
             <div id="water">
                 <!-- lure -->
                 <div id="object">   
-                    <img class="bobber" src="images/bobber.png" alt="Fish logo">
+                    <img class="bobber prevent-select" src="images/bobber.png" alt="Fish logo">
                 </div>
             </div>
 
