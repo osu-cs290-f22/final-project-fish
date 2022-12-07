@@ -276,14 +276,22 @@ function updateFishVisability()
     })
 }
 
-function getRandomImage() {
-    console.log(fishFiles)
-    return fishFiles[Math.floor(Math.random() * (fishFiles.length))].path
+async function getRandomImage() {
+    let fishURL = null
+    await fetch('http://localhost:3000/drawing/randomFish')
+        .then(response => response.json())
+        .then(data => {
+            fishURL = data.imgURL
+        })
+        .catch(error => {
+            console.log("Failed to grab image")
+        });
+    return fishURL
 }
-
 //Spawns one fish at a random location
-function fishSpawner(index) {
-    let photoUrl = getRandomImage()
+async function fishSpawner(index) {
+    let photoUrl = await getRandomImage()
+    console.log("get random return value  " + photoUrl)
     let ocean = document.getElementById("water")
 
     var personPhotoImg = document.createElement("img")
