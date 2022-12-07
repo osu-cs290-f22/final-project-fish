@@ -88,11 +88,13 @@ body {
 
 a {
   text-decoration: none;
+  color: white;
 }
+a:visited { text-decoration: none; color:white; }
+a:hover { text-decoration: none; color:white; }
+a:focus { text-decoration: none; color:white; }
+a:hover, a:active { text-decoration: none; color:white }
 
-a:hover {
-  /*text-decoration: underline;*/
-}
 
 header {
   background-color: #92cade;
@@ -102,7 +104,7 @@ header {
 }
 
 header a {
-  /*color: #444;*/
+/*  color: white;*/
 }
 
 @font-face {
@@ -211,12 +213,18 @@ SIDEBAR RELATED THINGS
 .lure_button {
     font-family: "broken_consoleregular", sans-serif;
 
+
     font-size: 20px;
     color: white;
     padding: 10px;
-    background-color: #000;
-    border: 1px solid #ababab;
-    border-radius: 5px;
+
+/*    background-color: #000;*/
+    background: rgba(0,0,0,.6);
+
+    margin: 6px;
+
+    border: 0px solid #ababab;
+    border-radius: 0px;
     font-weight: lighter;
     cursor: pointer;
 }
