@@ -188,6 +188,17 @@ function checkIfFishCaught()
             currentScore += fishValue;
             fish.caught = true;
             fish.hooked = false;
+
+            let changeElement = document.getElementById("overlay_image")
+            changeElement.src = fish.imgURL
+            changeElement = document.getElementById("radar_text")
+            changeElement.innerHTML = fish.name;
+            changeElement = document.getElementById("radar_bday")
+            changeElement.innerHTML = fish.birthday;
+            changeElement = document.getElementById("radar_movie")
+            changeElement.innerHTML = fish.favMovie;
+            changeElement = document.getElementById("radar_descr")
+            changeElement.innerHTML = fish.description;
         }
     })
 }
@@ -303,31 +314,42 @@ function updateFishVisability()
     })
 }
 
-async function getRandomImage() {
-    let fishURL = null
+async function getRandomFish() {
+    let fish = null
     await fetch('http://localhost:3000/drawing/randomFish')
         .then(response => response.json())
         .then(data => {
-            fishURL = data.imgURL
+            console.log(data)
+            fish = data
         })
         .catch(error => {
             console.log("Failed to grab image")
         });
-    return fishURL
+    return fish
 }
 //Spawns one fish at a random location
 async function fishSpawner(index) {
-    let photoUrl = await getRandomImage()
+    let photoUrl = await getRandomFish()
     let ocean = document.getElementById("water")
 
     var personPhotoImg = document.createElement("img")
     personPhotoImg.classList.add("fish-img")
-    personPhotoImg.src = photoUrl
+    personPhotoImg.src = photoUrl.imgURL
     personPhotoImg.setAttribute("id","fish" + index);
 
     ocean.appendChild(personPhotoImg)
-
-    const fishCoordinates = {distance: getRandomNumber(10, 2000), depth: getRandomNumber(10, 2000), hooked: false, caught: false, fishIndex: index} // TODO change to canvas size
+    const fishCoordinates = {
+        distance: getRandomNumber(10, 2000),
+        depth: getRandomNumber(10, 2000),
+        hooked: false,
+        caught: false,
+        fishIndex: index,
+        imgURL: photoUrl.imgURL,
+        birthday: photoUrl.birthday,
+        name: photoUrl.name,
+        description: photoUrl.description,
+        favMovie: photoUrl.favMovie
+    }
     fishs.push(fishCoordinates)
 }
 
