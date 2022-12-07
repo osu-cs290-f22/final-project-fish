@@ -54,6 +54,8 @@ const UPDATETIMER = 10;
 
 const fishValue = 100;
 
+const numberOfFishToSpawn = 20;
+
 var currentScore = 0;
 
 var FishHooked = false;
@@ -125,7 +127,7 @@ function startGame()
     })
 
     //create 20 fish
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < numberOfFishToSpawn; i++) {
         fishSpawner(i);
     }
 
@@ -136,7 +138,13 @@ function startGame()
 // Update Function
 function update()
 {
-    
+    if (fishs.length != numberOfFishToSpawn)
+    {
+        setTimeout(() => {
+            update();
+        }, UPDATETIMER);
+        return;
+    }
     if (startCast)
     {
         startCast = false;
