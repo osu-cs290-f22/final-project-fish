@@ -1,16 +1,42 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+
     <link href="./style2.css" rel="stylesheet" />
     <script src="./index.js" charset="utf-8" defer></script>
+
+
+    <!-- top bar with title -->
+    <header>
+        <div class="header-image-container">
+            <img src="images/zephyr.jpg" alt="Fish logo">
+        </div>
+
+        <h1 class="site-title"><a href="#">Fish related game</a></h1>
+    </header>
+
+
     <body>
+
+        <!-- stuff that moves -->
         <div class="gameviewer">
-            <div id="object"></div>
-                <button id = "button"> Cast Lure </button>
+
+            <div class="sidebar">
                 
-                <div id="water">
-                </div>
-                
+                <!-- needs to be in gameviewer -->
+                <button id="button"> Cast Lure </button>
+            
             </div>
+
+            <!-- water where fishes reside -->
+            <div id="water"></div>
+
+            <!-- lure -->
+            <div id="object"></div>
+
+        
         </div>
     </body>
 </html>
