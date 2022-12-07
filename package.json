@@ -6,7 +6,7 @@
     "start": "node server.js",
     "build": "",
     "prestart": "npm run build",
-    "devStart": "nodemon -i ./public/userImages/fishData.json server.js"
+    "devStart": "nodemon -i ./public/userImages/fishData.json server.js -e html,css,js,json"
   },
   "dependencies": {
     "express": "^4.18.2",
