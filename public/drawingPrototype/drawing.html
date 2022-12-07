@@ -8,6 +8,7 @@
 
         <title>Fish Pixel Art</title>
 
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
         <link rel="stylesheet" href="/drawingPrototype/drawing.css">
         <script src="/drawingPrototype/drawing.js" defer></script>
 
@@ -21,6 +22,8 @@
     <body>
 
         <section id="drawingPanel">
+
+            <div id="sideDiv"></div>
 
             <div id="allCreationSettings">
                 
@@ -41,16 +44,16 @@
                     </div>
 
                     <div >
-                        <!-- Guide lines toggle input field -->
-                        <label for="toggleGuide">Show Pixel Grid </label>
-                        <input type="checkbox" id="toggleGuide">
+                        <!-- Erase input field -->
+                        <label for="toggleErase">Use Eraser </label>
+                        <input type="checkbox" id="toggleErase">
 
                     </div>
 
                     <div >
-                        <!-- Erase input field -->
-                        <label for="toggleErase">Use Eraser </label>
-                        <input type="checkbox" id="toggleErase">
+                        <!-- Guide lines toggle input field -->
+                        <label for="toggleGuide">Show Pixel Grid </label>
+                        <input type="checkbox" id="toggleGuide">
 
                     </div>
 
@@ -67,14 +70,14 @@
                     <div>
 
                         <label for="fishName">Fish Name </label>
-                        <input type="text" id="fishName" value="Name for the fishy? Not yet linked with JS">
+                        <input type="text" id="fishName" placeholder="Jared" value="">
 
                     </div>
 
                     <div>
                         <!-- Fish birthday -->
                         <label for="fishBirthday">Fish Birthday </label>
-                        <input type="date" id="fishBirthday" name="fishBirthday" value="2022-07-22" min="2022-01-01" max="2024-12-31">
+                        <input type="date" id="fishBirthday" name="fishBirthday" min="2022-12-01">
 
                     </div>
                     
@@ -106,7 +109,8 @@
             <div id="canvasDiv">
                 <div id="guide"></div>
                 
-                <div id="fishBackground"></div>
+                <!-- <div id="fishBackground"></div> -->
+                <img src="/images/fishBackground.png" id="fishBackground" width="580px" height="px" />
 
                 <canvas width="580" height="580" id="drawingCanvas"></canvas>
 
@@ -116,11 +120,17 @@
             </div>
 
             
-            <div>
+            <div id="exportDiv">
+
                 <!-- Export button -->
                 <button type="button" id="exportButton" class="btn btn-default">Export</button>
             
+                <a href="/" id="backButton">Go Back</a>
+
+
             </div>
+
+            <div id="sideDiv"></div>
 
         </section>
 

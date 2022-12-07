@@ -3,7 +3,7 @@
     height: 50px;
     width: 50px;
     border-radius: 50px;
-    background: #0000ff;
+    background: #0000ff9c;
     left: 275px;
     top: 175px;
     color: yellow;
@@ -58,9 +58,17 @@
 
 .fish-img{
     /*background-color: aqua;*/
-    width: 10px;
-    height: 10px;
+    width: 50px;
+    height: 50px;
     position: relative;
+    /*Unselectable*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
 }
 
 .hidden{

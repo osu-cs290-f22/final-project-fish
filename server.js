@@ -30,6 +30,14 @@ app.get('/game', function (req, res, next) {
     res.status(200).sendFile(__dirname + '/public/index2.html')
 })
 
+app.get('/', function (req, res, next) {
+    console.log('== Request received')
+    console.log('  -- req.url:', req.url)
+    console.log('  -- req.method:', req.method)
+
+    res.status(200).sendFile(__dirname + '/public/index2.html')
+})
+
 app.get('/editor', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)

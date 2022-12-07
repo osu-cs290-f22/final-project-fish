@@ -52,6 +52,14 @@ const reelStrength = -1;
 // The number of milliseconds between refreses. 
 const UPDATETIMER = 10;
 
+const fishValue = 100;
+
+const numberOfFishToSpawn = 20;
+
+var currentScore = 0;
+
+var FishHooked = false;
+
 const VIEWPORTDIMENSIONS = {
     x: 1920,
     y: 1080
@@ -87,7 +95,9 @@ var viewportBounds = {
 var fishs = [
     // Fish1 = {
     //     depth: 100, //y
-    //     distance: 100 //x
+    //     distance: 100, //x
+    //     hooked: false, // If fish is affected by lure
+    //     caught: false  // Has fish been pulled to surface 
     // },
 ]
 
@@ -113,11 +123,14 @@ function startGame()
     })
 
     startButton.addEventListener("mousedown", function () {
-        startCast = true;
+        if (!gameIsRunning)
+        {
+            startCast = true;
+        }
     })
 
     //create 20 fish
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < numberOfFishToSpawn; i++) {
         fishSpawner(i);
     }
 
@@ -128,11 +141,17 @@ function startGame()
 // Update Function
 function update()
 {
-    console.log(gameIsRunning)
-    
+    if (fishs.length != numberOfFishToSpawn)
+    {
+        setTimeout(() => {
+            update();
+        }, UPDATETIMER);
+        return;
+    }
     if (startCast)
     {
         startCast = false;
+        FishHooked = false;
         cast(castRange);
     }
     if (gameIsRunning)
@@ -157,10 +176,26 @@ function checkIfReel()
         currentVelocity.x = 0;
         if (lurePos.y <= 0)
         {
+            checkIfFishCaught()
             gameIsRunning = false;
         }
+    } 
+    else if (lurePos.y <= 0 && currentVelocity.y != gravity)
+    {
+        currentVelocity.y = 0;
     }
-    
+}
+
+function checkIfFishCaught()
+{
+    fishs.forEach(function (fish, index) {
+        if (fish.hooked)
+        {
+            currentScore += fishValue;
+            fish.caught = true;
+            fish.hooked = false;
+        }
+    })
 }
 
 function cast(castDistance)
@@ -209,16 +244,54 @@ function updatePositionValues()
     lurePos.x += currentVelocity.x;
 }
 
+function distanceToLure(x, y)
+{
+    return Math.sqrt(((x - lurePos.x) * (x - lurePos.x)) + ((y - lurePos.y) * (y - lurePos.y)));
+}
+
+function checkIfFishIsHooked(fish)
+{
+    var catchRadius = 25;
+    if (gameIsRunning && (distanceToLure(fish.distance, fish.depth) <= catchRadius))
+    {
+        FishHooked = true;
+        return true;
+    }
+    return false;
+}
+
 // Update each fish location in viewport 
 function updateFishVisability()
 {
     fishs.forEach(function (fish, index) {
         var fishElement = document.getElementById(fishIDPrefix + index);
-        // Check if fish is in veiwportBounds
-        if ((fish.depth < viewportBounds.y.bottom && fish.depth > viewportBounds.y.top) && (fish.distance < viewportBounds.x.right && fish.distance > viewportBounds.x.left))
+        var stupidFishOffset = 0;
+        for (var i = 0; i < index; i++)
         {
-            fishElement.style.top = fish.depth + "px";
-            fishElement.style.left = fish.distance + "px";
+            if (!fishs[i].caught)
+            {
+                stupidFishOffset += 50;
+            }
+        }
+
+        // Check if fish is being caught
+        if (!fish.hooked && !FishHooked)
+        {
+            fish.hooked = checkIfFishIsHooked(fish)
+        }
+        // Check if fish is in veiwportBounds
+        if (!fish.caught)
+        {
+            if (fish.hooked)
+            {
+                fishElement.style.top = lurePos.y - 50 + "px";
+                fishElement.style.left = lurePos.x  - stupidFishOffset +  "px";
+            }
+            else
+            {
+                fishElement.style.top = fish.depth - 50 + "px";
+                fishElement.style.left = fish.distance - stupidFishOffset + "px";
+            }
             fishElement.classList.remove(hiddenClass)
         }
         else
@@ -243,17 +316,16 @@ async function getRandomImage() {
 //Spawns one fish at a random location
 async function fishSpawner(index) {
     let photoUrl = await getRandomImage()
-    console.log("get random return value  " + photoUrl)
     let ocean = document.getElementById("water")
 
     var personPhotoImg = document.createElement("img")
     personPhotoImg.classList.add("fish-img")
     personPhotoImg.src = photoUrl
-    personPhotoImg.setAttribute("id", "fish" + index);
+    personPhotoImg.setAttribute("id","fish" + index);
 
     ocean.appendChild(personPhotoImg)
 
-    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500)} // TODO change to canvas size
+    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500), hooked: false, caught: false} // TODO change to canvas size
     fishs.push(fishCoordinates)
 }
 
@@ -267,10 +339,9 @@ function updateScreenValues()
 
     viewport.style.top = -lurePos.y + "px";
     viewport.style.left = -lurePos.x + "px";
-    lure.style.top = lurePos.y + (VIEWPORTDIMENSIONS.y / 2) + "px";
-    lure.style.left = lurePos.x + (VIEWPORTDIMENSIONS.x / 2) + "px";
+    lure.style.top = lurePos.y + "px";
+    lure.style.left = lurePos.x + "px";
 }
-
 
 
 
