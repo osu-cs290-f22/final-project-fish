@@ -82,7 +82,8 @@ app.get('/about', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
-    res.status(200).sendFile(__dirname + '/public/about.html')
+    // res.status(200).sendFile(__dirname + '/public/about.html')
+    res.status(200).render("about")
 })
 
 app.get('/drawing/randomFish', (req, res) => {
