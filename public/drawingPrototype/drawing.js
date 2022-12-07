@@ -264,6 +264,12 @@ function exportData() {
     const favoriteMovie = document.getElementById("fishMovie").value.replace("<", "").replace(">", "")
     fish_data["favMovie"] = favoriteMovie
 
+    if(!fish_data["name"] || !fish_data["birthday"] || !fish_data["description"] || !fish_data["favMovie"]){
+
+        alert("Please enter in all of the fish data. OR ELSE.")
+        return
+    }
+
     // Post the object to the server and quit
         // If there's an error, tell the user and make inputs writeable again
     exportAndQuit(fish_data)
@@ -274,7 +280,7 @@ function exportAndQuit(fish_data){
 
     var reqUrl = "/drawing/newFish"
 
-    console.log(fish_data)
+    console.log(" == fish_data:", fish_data)
 
     // Fetch is used to send http requests through js
     fetch(reqUrl, {
@@ -293,7 +299,6 @@ function exportAndQuit(fish_data){
 
             // Tell the user their fish was uploaded and continue
             alert("Your fish was successfully uploaded!")
-            alert("Need to put away the editor now that it's done")
         
         // FAIL
         }else{
