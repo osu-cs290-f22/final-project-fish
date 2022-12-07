@@ -4,6 +4,8 @@
 
     --dark-red: #9f231a;
     --offwhite: #faf4f4;
+    --special-yellow: #eed63d;
+    --special-yellow-dark: #815d16;
 }
 
 html, body{
@@ -37,17 +39,17 @@ body{
 
     background-color: var(--background-red);
     border-radius: 2px;
-    justify-content: space-around;
+    justify-content: space-between;
 
     outline: 3px solid var(--dark-red);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
-#drawingPanel > :not(.sideDiv){
+/* #drawingPanel > :not(.sideDiv){
 
     background-color: red;
     margin-top: 20px;
-}
+} */
 
 #sideDiv{
 
@@ -65,6 +67,8 @@ body{
     justify-content: space-between;
 
     height: 100%;
+
+    margin-top: 20px;
 }
 
 #drawSettings{
@@ -83,12 +87,14 @@ body{
 
     height: 300px;
 
+    margin-bottom: 30px;
+
     display: flex;
     flex-direction: column;
 
     justify-content: space-evenly;
 
-    flex-grow: 1;
+    flex: 1;
 }
 
 #fishBackground{
@@ -112,6 +118,19 @@ body{
     outline: 3px solid var(--dark-red);
 
     z-index: 20;
+
+    margin-top: 20px;
+}
+
+#exportDiv{
+
+    margin-top: 20px;
+    margin-bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
 }
 
 #guide{
@@ -158,17 +177,87 @@ textarea::placeholder{
     color: var(--offwhite);
 }
 
+input::placeholder{
+
+    color: var(--offwhite);
+}
+
+input{
+
+    border: 3px solid var(--dark-red);
+    border-radius: 4px;
+    background-color: var(--background-red);
+
+    color: var(--offwhite);
+}
+
 label, p{
 
     font-weight: 700;
     color: var(--offwhite)
 }
 
-label, button, p, input, textarea, textarea::placeholder{
+label, button, p, input, textarea, textarea::placeholder, input::placeholder, a{
     
     font-family: Lato;
+}
+
+button{
+
+    font-size: 16px;
+    padding: 6px 10px;
+    font-weight: 700;
+    color: var(--offwhite);
+
+    border-radius: 3px;
+
+    background-color: var(--dark-red);
+    border: none;
+}
+
+button:active{
+
+    outline: 2px solid var(--dark-red);
+    background-color: var(--offwhite);
+
+    color: var(--dark-red);
+
+    box-shadow: 0 0 8px 0 var(--offwhite), 0 0 20px 0 var(--offwhite);
 }
 
 p{
     margin: 0;
 }
+
+#backButton, #backButton:visited{
+
+    font-size: 20px;
+    padding: 8px 12px;
+    font-weight: 700;
+    color: var(--special-yellow-dark);
+
+    border-radius: 4px;
+
+    background-color: var(--special-yellow);
+    border: 3px solid var(--special-yellow-dark);
+
+    text-decoration: none;
+}
+
+#backButton:active{
+
+    outline: 2px solid var(--special-yellow);
+    background-color: var(--offwhite);
+
+    color: var(--special-yellow);
+
+    box-shadow: 0 0 8px 0 var(--offwhite), 0 0 20px 0 var(--offwhite);
+
+    text-decoration: none;
+}
+
+/* range{
+
+    background-image: linear-gradient(to right, #82CFD0 0%, #82CFD0 50%, #fff 50%, #fff 100%);
+
+} */
