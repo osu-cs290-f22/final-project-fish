@@ -51,6 +51,11 @@ const reelStrength = -1;
 
 // The number of milliseconds between refreses. 
 const UPDATETIMER = 10;
+
+const fishValue = 100;
+
+var currentScore = 0;
+
 var FishHooked = false;
 
 const VIEWPORTDIMENSIONS = {
@@ -175,6 +180,7 @@ function checkIfFishCaught()
     fishs.forEach(function (fish, index) {
         if (fish.hooked)
         {
+            currentScore += fishValue;
             fish.caught = true;
             fish.hooked = false;
         }
