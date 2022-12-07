@@ -12,6 +12,57 @@
     justify-content: space-around;
 }
 
+#allCreationSettings{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    height: 100%;
+}
+
+#drawSettings{
+
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    margin-bottom: 50px;
+}
+
+#fishDetailSettings{
+
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    flex-grow: 1;
+}
+
+#fishBackground{
+
+    width: 580px;
+    height: 580px;
+    position: absolute;
+
+    top: 29px;
+    /* bottom: -580px; */
+
+    pointer-events: none;
+
+    background-image: url('/images/fishBackground.png');
+    background-size: 580px 580px;
+    opacity: 0.5;
+    image-rendering: pixelated;
+}
+
 #drawingCanvas{
     cursor: pointer;
 
@@ -21,7 +72,7 @@
 
 body{
 
-    background-color: aquamarine; 
+    background-color: #92cade; 
     /* JUST TO TEST! */
 }
 

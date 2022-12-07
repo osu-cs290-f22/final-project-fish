@@ -5,8 +5,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "",
-    "prestart": "npm run build",
-    "devStart": "nodemon -i ./public/userImages/fishData.json server.js"
+    "prestart": "npm run build"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -15,5 +14,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "nodemonConfig": {
+    "ext": "html,js,json,css"
   }
 }

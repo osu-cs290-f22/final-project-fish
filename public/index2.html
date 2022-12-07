@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+
+    <!-- game page script and css -->
     <link href="./style2.css" rel="stylesheet" />
     <script src="./index.js" charset="utf-8" defer></script>
+
+    <!-- modal script and css -->
+    <link href="./drawingPrototype/drawing.css" rel="stylesheet" />
+    <script src="./drawingPrototype/drawing.js" charset="utf-8" defer></script>
+
+    <!-- top bar with title -->
+    <header>
+        <div class="header-image-container">
+            <img src="images/zephyr.jpg" alt="Fish logo">
+        </div>
+
+        <h1 class="site-title"><a href="#">Fish related game</a></h1>
+    </header>
+
     <body>
+
+        <!-- stuff that moves -->
         <div class="gameviewer">
+
+            <div class="sidebar">
+                
+                <!-- needs to be in gameviewer -->
+                <button id="cast_lure"> Cast Lure </button>
+
+                <button id="open_editor"> Open Fish Editor </button>
+            
+            </div>
+
+            <!-- water where fishes reside -->
+            <div id="water"></div>
+
+            <!-- lure -->
             <div id="object"></div>
-                <button id = "button"> Cast Lure </button>
-                
-                <div id="water">
-                </div>
-                
+
+        
+        </div>
+
+        <!-- fish editor mdoal -->
+        <div id="fishEditor" class="modal">
+            
+            <!-- modal content -->
+            <div class="modal-content">
+
+                <!-- button to close modal -->
+                <span class="closeEditor">&times;</span>
+                <p>Fish Editor Modal Stuff</p>
+
             </div>
         </div>
+
+
     </body>
 </html>
