@@ -299,7 +299,6 @@ async function getRandomImage() {
 //Spawns one fish at a random location
 async function fishSpawner(index) {
     let photoUrl = await getRandomImage()
-    console.log("get random return value  " + photoUrl)
     let ocean = document.getElementById("water")
 
     var personPhotoImg = document.createElement("img")
