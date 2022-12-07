@@ -1,28 +1,93 @@
+:root {
+    --background-red: #F07167;
+    --dark-red: #9f231a;
+    --offwhite: #faf4f4;
+}
+
+html, body{
+
+    padding: 0;
+    margin: 0;
+}
+
+body{
+
+    background-image: linear-gradient(#92cade, #9cd6ec);
+    height: 100vh;
+
+    display: flow-root
+    /* overflow: auto; */
+}
+
 #drawingPanel{
 
     display: flex;
     flex-direction: row;
     width: 1200px;
-    height: 620px;
+    height: 600px;
     padding: 20px;
-    margin: auto;
 
-    background-color: #F07167;
-    border-radius: 3px;
+    margin: auto;
+    margin-top: 20px;
+
+    background-color: var(--background-red);
+    border-radius: 4px;
     justify-content: space-around;
+}
+
+#allCreationSettings{
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    height: 100%;
+}
+
+#drawSettings{
+
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-around;
+
+    margin-bottom: 50px;
+}
+
+#fishDetailSettings{
+
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    flex-grow: 1;
+}
+
+#fishBackground{
+
+    width: 580px;
+    height: 580px;
+    position: absolute;
+
+    pointer-events: none;
+
+    background-image: url('/images/fishBackground.png');
+    background-size: 580px 580px;
+    opacity: 0.5;
+    image-rendering: pixelated;
 }
 
 #drawingCanvas{
     cursor: pointer;
 
     /* temporary */
-    outline: 3px solid red;
-}
-
-body{
-
-    background-color: #92cade; 
-    /* JUST TO TEST! */
+    outline: 3px solid var(--dark-red);
 }
 
 #guide{
@@ -43,3 +108,43 @@ body{
     width: 70px;
 }
 
+label{
+
+    margin-right: 5px;
+}
+
+textarea{
+
+    margin-top: 5px;
+
+    display: block;
+    width: 100%;
+
+    border: 4px solid var(--dark-red);
+    border-radius: 4px;
+    background-color: var(--background-red);
+
+    font-size: 14px;
+    color: var(--offwhite);
+}
+
+textarea::placeholder{
+
+    font-size: 14px;
+    color: var(--offwhite);
+}
+
+label{
+
+    font-weight: 700;
+    color: var(--offwhite)
+}
+
+label, button, p, input, textarea, textarea::placeholder{
+    
+    font-family: Lato;
+}
+
+p{
+    margin: 0;
+}

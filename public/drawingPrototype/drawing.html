@@ -6,10 +6,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>Canvas Pixel Art</title>
+        <title>Fish Pixel Art</title>
 
         <link rel="stylesheet" href="/drawingPrototype/drawing.css">
         <script src="/drawingPrototype/drawing.js" defer></script>
+
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
     </head>
 
@@ -17,71 +22,82 @@
 
         <section id="drawingPanel">
 
-            <div id="allDrawSettings">
-                <div>
-                    <!-- Stroke Range, the added space in the text is necessary -->
-                    <label for="strokeRange" id="strokeLabel">Stroke 5</label>
-                    <input type="range" id="strokeRange" min="1" max="39" step="2" value="5">
-    
-                </div>
-
-                <div >
-                    <!-- Color input field -->
-                    <label for="colorInput">Set Color </label>
-                    <input type="color" id="colorInput">
-
-                </div>
-
-                <div >
-                    <!-- Guide lines toggle input field -->
-                    <label for="toggleGuide">Show Pixel Grid </label>
-                    <input type="checkbox" id="toggleGuide">
-
-                </div>
-
-                <div >
-                    <!-- Erase input field -->
-                    <label for="toggleErase">Use Eraser </label>
-                    <input type="checkbox" id="toggleErase">
-
-                </div>
-
-                <div >
-                    <!-- Clear button -->
-                    <button type="button" id="clearButton">Clear</button>
-
-                </div>
-
-                <div>
-
-                    <label for="fishName">Fish Name </label>
-                    <input type="text" id="fishName" value="Name for the fishy? Not yet linked with JS">
-
-                </div>
-
-                <div>
-                    <!-- Fish birthday -->
-                    <label for="fishBirthday">Fish Birthday </label>
-                    <input type="date" id="fishBirthday" name="fishBirthday" value="2022-07-22" min="2022-01-01" max="2024-12-31">
-
-                </div>
+            <div id="allCreationSettings">
                 
-                <div>
-
-                    <label for="fishBio">Fish Description </label>
-                    <input type="text" id="fishBio" value="fish bio, perhaps? Not yet linked with JS">
-                </div>
+                <div id="drawSettings">
                 
-                <div>
+                    <div>
+                        <!-- Stroke Range, the added space in the text is necessary -->
+                        <label for="strokeRange" id="strokeLabel">Stroke 5</label>
+                        <input type="range" id="strokeRange" min="1" max="39" step="2" value="5">
+        
+                    </div>
 
-                    <label for="fishMovie">Fish Favorite Movie (idk) </label>
-                    <input type="text" id="fishMovie" value="jaws">
-                </div>
-                
-                <div>
+                    <div >
+                        <!-- Color input field -->
+                        <label for="colorInput">Set Color </label>
+                        <input type="color" id="colorInput">
 
-                    <p style="width: 200px;"><br><br><br><br><br>Tip: Control-click on a color on the canvas 
-                        to make it your current color!</p>
+                    </div>
+
+                    <div >
+                        <!-- Guide lines toggle input field -->
+                        <label for="toggleGuide">Show Pixel Grid </label>
+                        <input type="checkbox" id="toggleGuide">
+
+                    </div>
+
+                    <div >
+                        <!-- Erase input field -->
+                        <label for="toggleErase">Use Eraser </label>
+                        <input type="checkbox" id="toggleErase">
+
+                    </div>
+
+                    <div >
+                        <!-- Clear button -->
+                        <button type="button" id="clearButton">Clear</button>
+
+                    </div>
+
+                </div>  
+
+                <div id="fishDetailSettings">
+
+                    <div>
+
+                        <label for="fishName">Fish Name </label>
+                        <input type="text" id="fishName" value="Name for the fishy? Not yet linked with JS">
+
+                    </div>
+
+                    <div>
+                        <!-- Fish birthday -->
+                        <label for="fishBirthday">Fish Birthday </label>
+                        <input type="date" id="fishBirthday" name="fishBirthday" value="2022-07-22" min="2022-01-01" max="2024-12-31">
+
+                    </div>
+                    
+                    <div>
+
+                        <label for="fishBio">Fish Description </label>
+                        <textarea id="fishBio" name="fishBio" placeholder="This fish is from..."></textarea>
+                        <!-- <input type="text" id="fishBio" name="fishBio" value="fish bio, perhaps? Not yet linked with JS"> -->
+                    </div>
+                    
+                    <div>
+
+                        <label for="fishMovie">Fish Favorite Movie </label>
+                        <textarea placeholder="Jaws (1975)" id="fishMovie" name="fishMovie"></textarea>
+                        <!-- <input type="text" id="fishMovie" name="fishMovie" value="jaws"> -->
+                    </div>
+                    
+                    <div>
+
+                        <p style="width: 200px;">Tip: Control-click on a color on the canvas 
+                            to make it your current color!</p>
+                    </div>
+
                 </div>
 
             </div>
@@ -89,14 +105,20 @@
 
             <div id="canvasDiv">
                 <div id="guide"></div>
+                
+                <div id="fishBackground"></div>
+
                 <canvas width="580" height="580" id="drawingCanvas"></canvas>
+
+                
+                
 
             </div>
 
             
             <div>
                 <!-- Export button -->
-                <button type="button" id="exportButton">Export</button>
+                <button type="button" id="exportButton" class="btn btn-default">Export</button>
             
             </div>
 

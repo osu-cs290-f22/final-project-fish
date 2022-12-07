@@ -2,3 +2,6 @@
 /node_modules/
 /package-lock.json
 
+
+/public/userImages/fishData.json
+public/userImages/fishData.json
