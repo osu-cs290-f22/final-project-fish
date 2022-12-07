@@ -11,21 +11,6 @@ var hiddenClass = "hidden"
  */
 var fishIDPrefix = "fish"
 
-var fishFiles = [
-    {
-        path: "./userImages/gold.png"
-    },
-    {
-        path: "https://clipground.com/images/cooked-fish-clipart-png-18.png"
-    },
-    {
-        path: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59168/fish-clipart-md.png"
-    },
-    {
-        path: "./userImages/derp.png"
-    }
-]
-
 // Name of lure class
 var lureID = "object"
 
@@ -54,7 +39,7 @@ const UPDATETIMER = 10;
 
 const fishValue = 100;
 
-const numberOfFishToSpawn = 20;
+const numberOfFishToSpawn = 35;
 
 var currentScore = 0;
 
@@ -325,7 +310,7 @@ async function fishSpawner(index) {
 
     ocean.appendChild(personPhotoImg)
 
-    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500), hooked: false, caught: false} // TODO change to canvas size
+    const fishCoordinates = {distance: getRandomNumber(10, 2000), depth: getRandomNumber(10, 2000), hooked: false, caught: false} // TODO change to canvas size
     fishs.push(fishCoordinates)
 }
 
