@@ -22,7 +22,8 @@ var fishFiles = [
     path: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59168/fish-clipart-md.png"
     },
     path4={
-    path: "./userImages/derp.png"    }
+    path: "./userImages/derp.png"
+}
 ]
 
 // Name of lure class
@@ -246,7 +247,6 @@ function fishSpawner(index) {
 
 
     ocean.appendChild(imgContainerDiv)
-
 }
 
 // Set viewportBounds to be centered on lure position 
