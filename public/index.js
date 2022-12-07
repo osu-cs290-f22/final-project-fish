@@ -248,7 +248,15 @@ function updateFishVisability()
 {
     fishs.forEach(function (fish, index) {
         var fishElement = document.getElementById(fishIDPrefix + index);
-        
+        var stupidFishOffset = 0;
+        for (var i = 0; i < index; i++)
+        {
+            if (!fishs[i].caught)
+            {
+                stupidFishOffset += 50;
+            }
+        }
+
         // Check if fish is being caught
         if (!fish.hooked && !FishHooked)
         {
@@ -259,13 +267,13 @@ function updateFishVisability()
         {
             if (fish.hooked)
             {
-                fishElement.style.top = lurePos.y + 10 + "px";
-                fishElement.style.left = lurePos.x  - 75 +  "px";
+                fishElement.style.top = lurePos.y - 50 + "px";
+                fishElement.style.left = lurePos.x  - stupidFishOffset +  "px";
             }
             else
             {
-                fishElement.style.top = fish.depth + "px";
-                fishElement.style.left = fish.distance - 100 + "px";
+                fishElement.style.top = fish.depth - 50 + "px";
+                fishElement.style.left = fish.distance - stupidFishOffset + "px";
             }
             fishElement.classList.remove(hiddenClass)
         }
@@ -315,8 +323,8 @@ function updateScreenValues()
 
     viewport.style.top = -lurePos.y + "px";
     viewport.style.left = -lurePos.x + "px";
-    lure.style.top = lurePos.y + 150 + "px";
-    lure.style.left = lurePos.x + 400 + "px";
+    lure.style.top = lurePos.y + "px";
+    lure.style.left = lurePos.x + "px";
 }
 
 
