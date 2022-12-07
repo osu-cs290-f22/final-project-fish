@@ -47,7 +47,7 @@
 
     border-color: #5c4639;
     border-style: solid;
-    border-width: 5px;
+    border-width: 6px;
 
     width: 300px;
     height: 2000px;
@@ -83,30 +83,32 @@
 
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  background-color: #92cade;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: #92cade;
 
-  /* disables scrolling */
-  overflow: hidden;
+    /* disables scrolling */
+    overflow: hidden;
 }
 
 
 a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
+    -webkit-text-stroke-color: black;
 }
-a:visited { text-decoration: none; color:white; }
+/*a:visited { text-decoration: none; color:white; }
 a:hover { text-decoration: none; color:white; }
 a:focus { text-decoration: none; color:white; }
-a:hover, a:active { text-decoration: none; color:white }
+a:hover, a:active { text-decoration: none; color:white }*/
 
 
 header {
-  background-color: #92cade;
-  display: flex;
-  align-items: center;
-  position: relative;
+    position: relative;
+    background-color: #92cade;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 header a {
@@ -216,7 +218,7 @@ MODAL RELATED THINGS
 SIDEBAR RELATED THINGS
 */
 
-.lure_button {
+.button {
     font-family: "broken_consoleregular", sans-serif;
 
 
@@ -235,23 +237,21 @@ SIDEBAR RELATED THINGS
     cursor: pointer;
 }
 
-.lure_button:hover {
+.button:hover {
     background-color: #f9d2b2;
     border-color: #333;
     color: #333;
 }
 
-
-
-
 /* make text colorful */
 #gradient-text {
 /*    background-image: linear-gradient(0deg, rgba(0,129,167,1) 0%, rgba(0,175,185,1) 26%, rgba(253,252,220,1) 50%, rgba(254,217,183,1) 67%, rgba(240,113,103,1) 100%);*/
     /* Fallback: Set a background color. */
-    background-color: black;
+    background-color: white;
 
     /* Create the gradient. */
-    background-image: linear-gradient(177deg, rgba(0,129,167,1) 28%, rgba(0,175,185,1) 37%, rgba(253,252,220,1) 47%, rgba(254,217,183,1) 57%, rgba(240,113,103,1) 65%);
+    background-image: linear-gradient(180deg, rgba(81,202,237,1) 15%, rgba(241,254,254,1) 65%);
+/*    linear-gradient(180deg, rgba(0,129,167,1) 28%, rgba(238,218,140,1) 65%)*/
 
     /* Set the background size and repeat properties. */
     background-size: 100%;
@@ -264,7 +264,101 @@ SIDEBAR RELATED THINGS
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
 
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+
+/*
+FISH SCANNER THINGS
+*/
+#container{
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+#main_image{
+    margin-top: 10px;
+    width: 100%;
+    height: 500px;
+    background: #676767;
+}
+#overlay_image{
+    position: absolute;
+    top: 62px;
+    right: 25%;
+    width: 160px;
+    height: 160px;
+    background: none;
+    z-index: 100;
+}
+
+#name {
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 100%;
+    height: 20px;
+}
+#bday {
+    position: absolute;
+    top: 2px;
+    right: 0px;
+}
+#movie {
+    width: 100%;
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    top: 270px;
+    left: 0px;
+    height: 30px;
+}
+#desc {
+    background: rgba(0,0,0,.6);
+    position: absolute;
+    top: 300px;
+    left: 0px;
+    height: 120px;
+}
+
+.fish_radar {
+    opacity: 1;
+    width: 100%;
+/*    border: 1px solid #ababab;*/
 
 }
 
+.radar_text {
+    font-family: "broken_consoleregular", sans-serif;
+
+    font-size: 15px;
+    color: white;
+    padding: 10px;
+
+
+    background: rgba(0,0,0,.6);
+
+    padding: 6px;
+
+    border: 0px solid #ababab;
+    border-radius: 0px;
+    font-weight: lighter;
+    cursor: url(images/glass.png), auto;
+}
+
+.radar_text_small  {
+    font-family: "broken_consoleregular", sans-serif;
+
+    font-size: 12px;
+    color: white;
+    padding: 10px;
+
+
+    padding: 6px;
+
+    border: 0px solid #ababab;
+    border-radius: 0px;
+    font-weight: lighter;
+    cursor: url(images/glass.png), auto;
+}

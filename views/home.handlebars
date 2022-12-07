@@ -12,16 +12,15 @@
         <script src="./index.js" charset="utf-8" defer></script>
 
         <!-- intro modal stuff -->
-        <link rel="stylesheet" href="/modalStyle.css">
+<!--         <link rel="stylesheet" href="/modalStyle.css">
         <script type="text/javascript" src="/intro_modal.js" defer></script>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet"> -->
 
     </head>
 
-    
 
     <!-- top bar with title -->
     <header>
@@ -34,31 +33,64 @@
 
     <body>
 
-        {{#if firstTime}}
+<!--         {{#if firstTime}}
 
             {{!-- <p style="font-size: 100px; color: white;"> HIIIIII ITHIS IS  ATEST</p> --}}
             {{> introModal}}
 
-        {{/if}}
+        {{/if}} -->
 
         <!-- stuff that moves -->
         <div class="gameviewer">
 
             <div class="sidebar">
 
-                <!-- needs to be in gameviewer -->
-                <button id="cast_lure" class="lure_button"> Cast Lure </button>
+                <!-- lure cast (needs to be in gameviewer) -->
+                <button id="cast_lure" class="button"> Cast Lure! </button>
 
-                <button class="lure_button">
-                <a href="editor"> Open Fish Editor </a>
+                <!-- fish editor button -->
+                <button class="button">
+                    <a href="editor"> Open Fish Editor </a>
                 </button>
 
-                <button class="lure_button">
-                <a href="about"> About Page </a>
+                <!-- about page button -->
+                <button class="button">
+                    <a href="about"> About Page </a>
                 </button>
 
-                <button class="lure_button">
-                <a href="lol_hi_Hess"> 404 Page </a>
+                <!-- fish radar setup -->
+                <div id="container">
+
+                    <!-- radar background (don't mess with this) -->
+                    <div id="main_image">
+                        <img class="fish_radar" src="images/radar.gif">
+                    </div>
+
+                    <!-- fish information -->
+                    <div id="name">
+                        <b class="radar_text"> Zephyr Fish </b>
+                    </div>
+                    <div id="bday">
+                        <b class="radar_text"> 4/20/2020 </b>
+                    </div>
+                    <div id="movie">
+                        <b class="radar_text_small"> Favourite Movie: </b>
+                        <b class="radar_text_small"> Inception </b>
+                    </div>
+                    <div id="desc">
+                        <b class="radar_text_small"> " </b>
+                        <b class="radar_text_small"> He's the fastest fish west of the mississippi </b>
+                        <b class="radar_text_small"> " </b>
+                    </div>
+
+                    <!-- fish image -->
+                    <img id="overlay_image" src="images/zephyr.png" alt="zephyr">
+
+                </div>
+
+                <!-- 404 page button -->
+                <button class="button">
+                    <a href="lol_hi_Hess"> 404 Page </a>
                 </button>
 
             </div>
