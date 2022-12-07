@@ -1,4 +1,5 @@
 [
+<<<<<<< Updated upstream
   {
     "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
     "birthday": "",
@@ -41,4 +42,31 @@
     "description": "This fish is super cool",
     "favMovie": "Finding Nemo"
   }
+=======
+
+    {
+        "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+        "birthday": "",
+        "name": "Example Fish",
+        "description": "This fish is super cool",
+        "favMovie": "Finding Nemo"
+    },
+
+    {
+        "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+        "birthday": "",
+        "name": "Example Fish",
+        "description": "This fish is super cool",
+        "favMovie": "Finding Nemo"
+    },
+
+    {
+        "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+        "birthday": "",
+        "name": "Example Fish",
+        "description": "This fish is super cool",
+        "favMovie": "Finding Nemo"
+    }
+
+>>>>>>> Stashed changes
 ]
