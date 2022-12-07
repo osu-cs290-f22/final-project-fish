@@ -153,7 +153,10 @@ header a {
 
 .header-image-container {
     width: 80px;
+    height: 80px;
     border: none;
+
+    margin-left: 10px;
 }
 
 .header-image-container img {

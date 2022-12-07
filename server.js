@@ -3,15 +3,25 @@ var exphbs = require('express-handlebars');
 
 var fishData = require('./public/userImages/fishData.json')
 var fs = require("fs");
+const e = require('express');
 
 
 var app = express()
 var port = process.env.PORT || 3000;
 
 
+var pastUsers = []  // Used to check who to show the modal to
+
+
 function getRandomImage() {
     return fishData[Math.floor(Math.random() * (fishData.length))]
 }
+
+function getRandomFishURI() {
+    return fishData[Math.floor(Math.random() * (fishData.length))].imgURL
+}
+
+
 
 app.engine('handlebars', exphbs.engine({
   defaultLayout: null  // 'main'
@@ -23,12 +33,29 @@ app.use(express.json())
 app.use(express.static('public'))
 
 
+// Note that this user is not new
+app.get("*", function(req, res, next){
+
+    if(!pastUsers.includes(req.user)){
+        pastUsers.push(req.user)
+    }
+    next()
+})
+
 
 app.get(['/', '/game'], function (req, res, next) {
 
+    var isFirstTime
+
+    if(req.user in pastUsers)
+        isFirstTime = false
+    else   
+        isFirstTime = true
+
     res.status(200).render("home", {
 
-        firstTime: true
+        firstTime: isFirstTime,
+        headerFishImgURL: getRandomFishURI()
     })
 })
 
@@ -37,7 +64,8 @@ app.get('/return', function(req, res, next){
 
     res.status(200).render("home", {
 
-        "firstTime": false
+        "firstTime": false,
+        headerFishImgURL: getRandomFishURI()
     })
 })
 
