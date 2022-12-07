@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+
+        <meta charset="UTF-8">
+
         <title>Fish Related Game</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
@@ -21,16 +24,18 @@
 
     </head>
 
-    
+    <!-- previous location of header... -->
 
     <!-- top bar with title -->
-    <header>
+    <!-- <header>
         <div class="header-image-container">
-            <img src="images/zephyr.png" alt="Fish logo">
+            <img src="{{headerFishImgURL}}" width="80px" height="80px" alt="Fish logo">
         </div>
 
         <h1 class="site-title" id="gradient-text"><a href="#">Fish related game</a></h1>
-    </header>
+    </header> -->
+
+
 
     <body>
 
@@ -44,21 +49,61 @@
         <!-- stuff that moves -->
         <div class="gameviewer">
 
+            <header>
+                <div class="header-image-container">
+                    <img src="{{headerFishImgURL}}" width="80px" height="80px" alt="Fish logo">
+                </div>
+
+                <h1 class="site-title" id="gradient-text"><a href="#">Fish related game</a></h1>
+            </header>
             <div class="sidebar">
 
-                <!-- needs to be in gameviewer -->
-                <button id="cast_lure" class="lure_button"> Cast Lure </button>
+                <!-- lure cast (needs to be in gameviewer) -->
+                <button id="cast_lure" class="button"> Cast Lure! </button>
 
-                <button class="lure_button">
-                <a href="editor"> Open Fish Editor </a>
+                <!-- fish editor button -->
+                <button class="button">
+                    <a href="editor"> Open Fish Editor </a>
                 </button>
 
-                <button class="lure_button">
-                <a href="about"> About Page </a>
+                <!-- about page button -->
+                <button class="button">
+                    <a href="about"> About Page </a>
                 </button>
 
-                <button class="lure_button">
-                <a href="lol_hi_Hess"> 404 Page </a>
+                <!-- fish radar setup -->
+                <div id="container">
+
+                    <!-- radar background (don't mess with this) -->
+                    <div id="main_image">
+                        <img class="fish_radar" src="images/radar.gif">
+                    </div>
+
+                    <!-- fish information -->
+                    <div id="name">
+                        <b class="radar_text" id="radar_text"> Zephyr Fish </b>
+                    </div>
+                    <div id="bday">
+                        <b class="radar_text" id="radar_bday"> 4/20/2020 </b>
+                    </div>
+                    <div id="movie">
+                        <b class="radar_text_small"> Favourite Movie: </b>
+                        <b class="radar_text_small" id="radar_movie"> Inception </b>
+                    </div>
+                    <div id="desc">
+                        <b class="radar_text_small"> " </b>
+                        <b class="radar_text_small" id="radar_descr"> He's the fastest fish west of the mississippi </b>
+                        <b class="radar_text_small"> " </b>
+                    </div>
+
+                    <!-- fish image -->
+                    <img id="overlay_image" src="images/zephyr.png" alt="zephyr">
+
+                </div>
+
+                <!-- 404 page button -->
+                <button class="button">
+                    <a href="lol_hi_Hess"> 404 Page </a>
                 </button>
 
             </div>
@@ -67,14 +112,16 @@
             <div id="water">
                 <!-- lure -->
                 <div id="object">   
-                    <img class="bobber" src="images/bobber.png" alt="Fish logo">
+                    <img class="bobber prevent-select" src="images/bobber.png" alt="Fish logo">
                 </div>
             </div>
 
             
 
-        
+            <svg>
+                <line id="line" stroke-width="1px" stroke="#FFFFFF" x1="0" y1="150" x2="100" y2="100">
+            </svg>
         </div>
-
+        
     </body>
 </html>

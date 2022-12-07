@@ -3,15 +3,25 @@ var exphbs = require('express-handlebars');
 
 var fishData = require('./public/userImages/fishData.json')
 var fs = require("fs");
+const e = require('express');
 
 
 var app = express()
 var port = process.env.PORT || 3000;
 
 
+var pastUsers = []  // Used to check who to show the modal to
+
+
 function getRandomImage() {
     return fishData[Math.floor(Math.random() * (fishData.length))]
 }
+
+function getRandomFishURI() {
+    return fishData[Math.floor(Math.random() * (fishData.length))].imgURL
+}
+
+
 
 app.engine('handlebars', exphbs.engine({
   defaultLayout: null  // 'main'
@@ -23,12 +33,29 @@ app.use(express.json())
 app.use(express.static('public'))
 
 
+// Note that this user is not new
+app.get("*", function(req, res, next){
+
+    if(!pastUsers.includes(req.user)){
+        pastUsers.push(req.user)
+    }
+    next()
+})
+
 
 app.get(['/', '/game'], function (req, res, next) {
 
+    var isFirstTime
+
+    if(req.user in pastUsers)
+        isFirstTime = false
+    else   
+        isFirstTime = true
+
     res.status(200).render("home", {
 
-        firstTime: true
+        firstTime: isFirstTime,
+        headerFishImgURL: getRandomFishURI()
     })
 })
 
@@ -37,7 +64,8 @@ app.get('/return', function(req, res, next){
 
     res.status(200).render("home", {
 
-        "firstTime": false
+        "firstTime": false,
+        headerFishImgURL: getRandomFishURI()
     })
 })
 
@@ -47,14 +75,16 @@ app.get('/editor', function (req, res, next) {
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
 
-    res.status(200).sendFile(__dirname + '/public/drawingPrototype/drawing.html')
+    // res.status(200).sendFile(__dirname + '/public/drawingPrototype/drawing.html')
+    res.status(200).render("drawing")
 })
 
 app.get('/about', function (req, res, next) {
     console.log('== Request received')
     console.log('  -- req.url:', req.url)
     console.log('  -- req.method:', req.method)
-    res.status(200).sendFile(__dirname + '/public/about.html')
+    // res.status(200).sendFile(__dirname + '/public/about.html')
+    res.status(200).render("about")
 })
 
 app.get('/drawing/randomFish', (req, res) => {
@@ -66,12 +96,12 @@ app.post('/drawing/newFish', function(req, res, next){
     if(req.body && req.body.imgURL && req.body.birthday && req.body.name && req.body.description && req.body.favMovie){
 
         // Catch any people posting unfiltered data
-        // if(req.body.name.contains('>') || req.body.name.contains('<') || req.body.description.contains('>') ||
-        //     req.body.description.contains('<') || req.body.favMovie.contains('>') || req.body.favMovie.contains('<')){
+        if(req.body.name.includes('>') || req.body.name.includes('<') || req.body.description.includes('>') ||
+            req.body.description.includes('<') || req.body.favMovie.includes('>') || req.body.favMovie.includes('<')){
 
-        //         res.status(400).send('Possibly dangerous fish data was rejected.')
-        //         return
-        //     }
+                res.status(400).send('Possibly dangerous fish data was rejected.')
+                return
+            }
 
         var newFishObj = {
 
