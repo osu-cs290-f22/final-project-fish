@@ -4,6 +4,7 @@
 
     --dark-red: #9f231a;
     --offwhite: #faf4f4;
+    --offwhite-placeholder: #e8dfdf;
     --special-yellow: #eed63d;
     --special-yellow-dark: #815d16;
 }
@@ -118,6 +119,9 @@ body{
     outline: 3px solid var(--dark-red);
 
     z-index: 20;
+}
+
+#canvasDiv{
 
     margin-top: 20px;
 }
@@ -174,12 +178,14 @@ textarea{
 textarea::placeholder{
 
     font-size: 14px;
-    color: var(--offwhite);
+    color: var(--offwhite-placeholder);
+    font-style: italic;
 }
 
 input::placeholder{
 
-    color: var(--offwhite);
+    color: var(--offwhite-placeholder);
+    font-style: italic;
 }
 
 input{
