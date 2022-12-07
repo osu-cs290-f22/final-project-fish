@@ -11,9 +11,13 @@ const toggleGuide = document.getElementById("toggleGuide")
 const clearButton = document.getElementById("clearButton")
 const toggleErase = document.getElementById("toggleErase") 
 const exportButton = document.getElementById("exportButton")
-
 const strokeRange = document.getElementById("strokeRange")
 const strokeLabel = document.getElementById("strokeLabel")
+
+const fishBirthday = document.getElementById("fishBirthday")
+const fishName = document.getElementById("fishName")
+const fishDescription = document.getElementById("fishBio")
+const fishFavoriteMovie = document.getElementById("fishMovie")
 
 const drawingContext = canvas.getContext("2d")  // aka ctx
 
@@ -113,6 +117,14 @@ function canvasMouseActive(e){
 }
 
 
+function clearEntireCanvas(){
+
+    drawingContext.clearRect(0, 0, canvas.width, canvas.height)
+
+    for (var member in colorHistory) delete colorHistory[member]
+}
+
+
 function handleClearButtonClick(){
 
     const yes = confirm("Are you sure you wish to clear the canvas?")
@@ -120,12 +132,10 @@ function handleClearButtonClick(){
     if(!yes)
         return
 
-    drawingContext.clearRect(0, 0, canvas.width, canvas.height)
-
     // drawingContext.fillStyle = "rgba(0, 0, 0, 0)"
     // drawingContext.fillRect(0, 0, canvas.width, canvas.height)
 
-    for (var member in colorHistory) delete colorHistory[member]
+    clearEntireCanvas()
 }
 
 
@@ -233,15 +243,20 @@ function changeStroke(){
 
 function makeInputsReadOnly(){
 
-    console.log("TODO: Make inputs read-only")
+    fishBirthday.setAttribute("readonly", "")
+    fishName.setAttribute("readonly", "")
+    fishDescription.setAttribute("readonly", "")
+    fishFavoriteMovie.setAttribute("readonly", "")
 }
 
 
 function makeInputsWriteable(){
 
-    console.log("TODO: Make inputs writeable-only")
+    fishBirthday.removeAttribute("readonly")
+    fishName.removeAttribute("readonly")
+    fishDescription.removeAttribute("readonly")
+    fishFavoriteMovie.removeAttribute("readonly")
 }
-
 
 
 function exportData() {
@@ -253,26 +268,38 @@ function exportData() {
 
     fish_data["imgURL"] = canvas.toDataURL("image/png")
 
-    fish_data["birthday"] = document.getElementById("fishBirthday").value
+    fish_data["birthday"] = fishBirthday.value
 
-    const fishName = document.getElementById("fishName").value.replace("<", "").replace(">", "")
-    fish_data["name"] = fishName
+    const fishNameVal = fishName.value.replace("<", "").replace(">", "")
+    fish_data["name"] = fishNameVal
 
-    const fishDescription = document.getElementById("fishBio").value.replace("<", "").replace(">", "")
-    fish_data["description"] = fishDescription
+    const fishDescVal = fishDescription.value.replace("<", "").replace(">", "")
+    fish_data["description"] = fishDescVal
 
-    const favoriteMovie = document.getElementById("fishMovie").value.replace("<", "").replace(">", "")
-    fish_data["favMovie"] = favoriteMovie
+    const fishMovieVal = fishFavoriteMovie.value.replace("<", "").replace(">", "")
+    fish_data["favMovie"] = fishMovieVal
 
     if(!fish_data["name"] || !fish_data["birthday"] || !fish_data["description"] || !fish_data["favMovie"]){
 
         alert("Please enter in all of the fish data. OR ELSE.")
+        makeInputsWriteable()
         return
     }
 
     // Post the object to the server and quit
         // If there's an error, tell the user and make inputs writeable again
     exportAndQuit(fish_data)
+}
+
+
+function clearAllFields() {
+
+    clearEntireCanvas()
+
+    fishBirthday.value = ""
+    fishName.value = ""
+    fishDescription.value = ""
+    fishFavoriteMovie.value = ""
 }
 
 
@@ -299,19 +326,21 @@ function exportAndQuit(fish_data){
 
             // Tell the user their fish was uploaded and continue
             alert("Your fish was successfully uploaded!")
+            makeInputsWriteable()
+            clearAllFields()
         
         // FAIL
         }else{
 
             alert("An error occured--this fish was not saved: " + res.status)
-            makeInputsReadOnly()
+            makeInputsWriteable()
         }
 
     // ERROR
     }).catch(function (err){
 
       alert("An error occured--this fish was not saved: " + err)
-      makeInputsReadOnly()
+      makeInputsWriteable()
     })
 }
 
