@@ -80,47 +80,20 @@ var viewportBounds = {
 
 // IMPORT FISH HERE
 var fishs = [
-    Fish1 = {
-        depth: 100,
-        distance: 100
-    },
-    Fish2 = {
-        depth: 600,
-        distance: 400
-    },
-    Fish3 = {
-        depth: 200,
-        distance: 300
-    },
-    Fish4 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish5 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish6 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish7 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish8 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish9 = {
-        depth: 100,
-        distance: 50
-    },
+    // Fish1 = {
+    //     depth: 100, //y
+    //     distance: 100 //x
+    // },
 ]
 
 var startCast = false;
 
 var gameIsRunning = false;
+
+function getRandomNumber(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 
 // METHODS ***************************
 //      -Called before first update
@@ -267,6 +240,11 @@ function fishSpawner(index) {
 
 
     ocean.appendChild(personPhotoImg)
+
+    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500)} // TODO change to canvas size
+    fishs.push(fishCoordinates)
+    console.log(fishs)
+
 }
 
 // Set viewportBounds to be centered on lure position 
