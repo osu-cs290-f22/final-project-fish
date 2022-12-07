@@ -123,7 +123,10 @@ function startGame()
     })
 
     startButton.addEventListener("mousedown", function () {
-        startCast = true;
+        if (!gameIsRunning)
+        {
+            startCast = true;
+        }
     })
 
     //create 20 fish
