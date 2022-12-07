@@ -31,15 +31,15 @@ var editorButton = document.getElementById(editorID)
 
 
 // Constant Variables
-const gravity = 1;
-const reelStrength = -1;
+const gravity = 2.4;
+const reelStrength = -2;
 
 // The number of milliseconds between refreses. 
 const UPDATETIMER = 10;
 
 const fishValue = 100;
 
-const numberOfFishToSpawn = 35;
+const numberOfFishToSpawn = 75;
 
 var currentScore = 0;
 
