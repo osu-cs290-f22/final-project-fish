@@ -12,18 +12,18 @@ var hiddenClass = "hidden"
 var fishIDPrefix = "fish"
 
 var fishFiles = [
-    path1={
-    path: "./userImages/gold.png"
+    {
+        path: "./userImages/gold.png"
     },
-    path2={
-    path: "https://clipground.com/images/cooked-fish-clipart-png-18.png"
+    {
+        path: "https://clipground.com/images/cooked-fish-clipart-png-18.png"
     },
-    path3={
-    path: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59168/fish-clipart-md.png"
+    {
+        path: "https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/59168/fish-clipart-md.png"
     },
-    path4={
-    path: "./userImages/derp.png"
-}
+    {
+        path: "./userImages/derp.png"
+    }
 ]
 
 // Name of lure class
@@ -80,47 +80,20 @@ var viewportBounds = {
 
 // IMPORT FISH HERE
 var fishs = [
-    Fish1 = {
-        depth: 100,
-        distance: 100
-    },
-    Fish2 = {
-        depth: 600,
-        distance: 400
-    },
-    Fish3 = {
-        depth: 200,
-        distance: 300
-    },
-    Fish4 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish5 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish6 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish7 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish8 = {
-        depth: 100,
-        distance: 50
-    },
-    Fish9 = {
-        depth: 100,
-        distance: 50
-    },
+    // Fish1 = {
+    //     depth: 100, //y
+    //     distance: 100 //x
+    // },
 ]
 
 var startCast = false;
 
 var gameIsRunning = false;
+
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 // METHODS ***************************
 //      -Called before first update
@@ -259,14 +232,15 @@ function fishSpawner(index) {
     let photoUrl = getRandomImage()
     let ocean = document.getElementById("water")
 
-
     var personPhotoImg = document.createElement("img")
     personPhotoImg.classList.add("fish-img")
     personPhotoImg.src = photoUrl
     personPhotoImg.setAttribute("id","fish" + index);
 
-
     ocean.appendChild(personPhotoImg)
+
+    const fishCoordinates = {distance: getRandomNumber(10, 500), depth: getRandomNumber(10, 500)} // TODO change to canvas size
+    fishs.push(fishCoordinates)
 }
 
 // Set viewportBounds to be centered on lure position 
