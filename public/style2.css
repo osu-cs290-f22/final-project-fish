@@ -83,6 +83,7 @@
 
 
 body {
+    cursor: url(images/cursor.png), auto;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     background-color: #92cade;
@@ -96,6 +97,7 @@ a {
     text-decoration: none;
     color: white;
     -webkit-text-stroke-color: black;
+    cursor: url(images/puffer.png), auto;
 }
 /*a:visited { text-decoration: none; color:white; }
 a:hover { text-decoration: none; color:white; }
@@ -209,7 +211,7 @@ MODAL RELATED THINGS
 .closeEditor:focus {
     color: black;
     text-decoration: none;
-    cursor: pointer;
+    cursor: url(images/puffer.png), auto;
 }
 
 
@@ -237,7 +239,7 @@ SIDEBAR RELATED THINGS
     border: 0px solid #ababab;
     border-radius: 0px;
     font-weight: lighter;
-    cursor: pointer;
+    cursor: url(images/puffer.png), auto;
 }
 
 .button:hover {
