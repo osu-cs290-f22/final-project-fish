@@ -274,12 +274,14 @@ function exportAndQuit(fish_data){
 
     var reqUrl = "/drawing/newFish"
 
+    console.log(fish_data)
+
     // Fetch is used to send http requests through js
     fetch(reqUrl, {
 
       // Default request is get, but we want it to be a post request
       method: "POST",
-      body: fish_data,
+      body: JSON.stringify(fish_data),
       headers: {
         "Content-Type": "application/json"
       }
