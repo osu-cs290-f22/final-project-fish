@@ -89,6 +89,30 @@ var fishs = [
         distance: 400
     },
     Fish3 = {
+        depth: 200,
+        distance: 300
+    },
+    Fish4 = {
+        depth: 100,
+        distance: 50
+    },
+    Fish5 = {
+        depth: 100,
+        distance: 50
+    },
+    Fish6 = {
+        depth: 100,
+        distance: 50
+    },
+    Fish7 = {
+        depth: 100,
+        distance: 50
+    },
+    Fish8 = {
+        depth: 100,
+        distance: 50
+    },
+    Fish9 = {
         depth: 100,
         distance: 50
     },
@@ -217,8 +241,6 @@ function updateFishVisability()
         {
             fishElement.style.top = fish.depth + "px";
             fishElement.style.left = fish.distance + "px";
-            // console.log(fishElement)
-            // document.getElementById("your-iframe").setAttribute('src', "./gold");
             fishElement.classList.remove(hiddenClass)
         }
         else
@@ -237,16 +259,14 @@ function fishSpawner(index) {
     let photoUrl = getRandomImage()
     let ocean = document.getElementById("water")
 
-    var imgContainerDiv = document.createElement("div")
-    imgContainerDiv.classList.add("fish" + index)
 
     var personPhotoImg = document.createElement("img")
     personPhotoImg.classList.add("fish-img")
     personPhotoImg.src = photoUrl
-    imgContainerDiv.appendChild(personPhotoImg)
+    personPhotoImg.setAttribute("id","fish" + index);
 
 
-    ocean.appendChild(imgContainerDiv)
+    ocean.appendChild(personPhotoImg)
 }
 
 // Set viewportBounds to be centered on lure position 
