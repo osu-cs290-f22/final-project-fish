@@ -124,13 +124,14 @@ textarea{
     border-radius: 4px;
     background-color: var(--background-red);
 
-    font-size: 16px;
+    font-size: 14px;
+    color: var(--offwhite);
 }
 
 textarea::placeholder{
 
-    font-size: 16px;
-    color: black;
+    font-size: 14px;
+    color: var(--offwhite);
 }
 
 label{
