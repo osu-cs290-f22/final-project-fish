@@ -2,7 +2,7 @@
     "allFishes": [
 
         {
-            "url": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+            "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
             "birthday": "",
             "name": "Example Fish",
             "description": "This fish is super cool",
@@ -10,7 +10,7 @@
         },
 
         {
-            "url": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+            "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
             "birthday": "",
             "name": "Example Fish",
             "description": "This fish is super cool",
@@ -18,7 +18,7 @@
         },
 
         {
-            "url": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
+            "imgURL": "data:image/png;base64,iVBORw0KG...(this is just an example, it can be plugged into img.src",
             "birthday": "",
             "name": "Example Fish",
             "description": "This fish is super cool",
