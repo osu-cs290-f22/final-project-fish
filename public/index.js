@@ -343,6 +343,11 @@ function updateScreenValues()
     viewport.style.left = -lurePos.x + "px";
     lure.style.top = lurePos.y + "px";
     lure.style.left = lurePos.x + "px";
+
+    var line = document.getElementById("line")
+    line.x2.baseVal.value = lurePos.x + 30
+    line.y2.baseVal.value = lurePos.y + 190
+    
 }
 
 

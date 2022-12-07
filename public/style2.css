@@ -40,6 +40,15 @@
     width: 5000px;
 }
 
+svg 
+{
+    position: relative;
+    top: -2200px;
+    left: 300px;
+    width: 100%;
+    height: 100%;
+}
+
 .sidebar {
     /*background-color: red;*/
     background: url(images/woodboard.PNG) repeat;
