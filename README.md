@@ -20,3 +20,5 @@ Commands to run server:
 
 `npm start`
 (Will restart server automatically with updates to js, json files)
+
+![Fish Editor](docs/images/page_fishedit.png)
